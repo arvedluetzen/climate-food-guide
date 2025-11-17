@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>{{ title }}</title>
+
+  <!-- Tailwind output file -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <!-- Optional JS libraries (add more later) -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800 leading-relaxed">
+
+  <main class="max-w-3xl mx-auto px-4 py-10">
+    {{ content | safe }}
+  </main>
+
+</body>
+</html>
+
+

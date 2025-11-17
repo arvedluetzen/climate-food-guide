@@ -1,0 +1,14 @@
+{
+  "name": "climate-food-guide",
+  "version": "1.0.0",
+  "description": "Interactive climate-food website",
+  "scripts": {
+    "start": "eleventy --serve --config=eleventy.config.js",
+    "build": "eleventy --config=eleventy.config.js",
+    "tailwind": "tailwindcss -i ./src/assets/css/main.css -o ./_site/assets/css/main.css --watch"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "tailwindcss": "^4.0.0"
+  }
+}
