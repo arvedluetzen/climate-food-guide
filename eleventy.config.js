@@ -1,5 +1,4 @@
 module.exports = function(eleventyConfig) {
-  console.log("✅ Eleventy config loaded!");
   return {
     dir: {
       input: "src",

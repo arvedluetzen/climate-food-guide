@@ -5,10 +5,12 @@
   "scripts": {
     "start": "eleventy --serve --config=eleventy.config.js",
     "build": "eleventy --config=eleventy.config.js",
-    "tailwind": "tailwindcss -i ./src/assets/css/main.css -o ./_site/assets/css/main.css --watch"
+    "tailwind": "tailwindcss -i ./src/assets/css/main.css -o ./_site/assets/css/main.css --watch",
+    "deploy": "npm run build && gh-pages -d _site"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
+    "gh-pages": "^6.3.0",
     "tailwindcss": "^4.0.0"
   }
 }
