@@ -3,14 +3,19 @@
   "version": "1.0.0",
   "description": "Interactive climate-food website",
   "scripts": {
-    "start": "eleventy --serve --config=eleventy.config.js",
-    "build": "eleventy --config=eleventy.config.js",
+    "start": "npm-run-all --parallel eleventy tailwind",
+    "eleventy": "eleventy --serve --config=eleventy.config.js",
     "tailwind": "tailwindcss -i ./src/assets/css/main.css -o ./_site/assets/css/main.css --watch",
+    "build": "tailwindcss -i ./src/assets/css/main.css -o ./_site/assets/css/main.css && eleventy --config=eleventy.config.js",
     "deploy": "npm run build && gh-pages -d _site"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.2",
     "gh-pages": "^6.3.0",
     "tailwindcss": "^4.0.0"
+  },
+  "dependencies": {
+    "gojs": "^3.1.2",
+    "npm-run-all": "^4.1.5"
   }
 }

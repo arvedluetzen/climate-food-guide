@@ -1,0 +1,43 @@
+<div class="detail-page">
+  <button id="close-detail" class="bg-gray-700 text-white px-4 py-2 rounded mb-4">← Back</button>
+  <h1 class="text-3xl font-bold mb-4">{{ title }}</h1>
+  <div class="detail-content space-y-4">
+    {{ content | safe }}
+  </div>
+</div>
+
+<style>
+  .detail-content h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .detail-content h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .detail-content p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+  .detail-content ul {
+    list-style: disc;
+    margin-left: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  .detail-content li {
+    margin-bottom: 0.25rem;
+  }
+  .detail-content a {
+    color: var(--secondary50);
+    text-decoration: underline;
+  }
+  .detail-content a:hover {
+    color: var(--secondary67);
+  }
+</style>
+

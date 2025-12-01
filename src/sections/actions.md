@@ -1,0 +1,6 @@
+<section class="py-12 text-center">
+    <h2 class="text-2xl font-bold mb-6">What Actions Can We Take?</h2>
+    <p class="mb-4">Explore how different actions can influence positive change across different areas.</p>
+    <div id="actionsDiagram" class="my-8"></div>
+</section>
+

@@ -1,1 +1,106 @@
 @import "tailwindcss";
+
+:root {
+	--background: #ffffff;
+	--GREY100: #d6d6d6;
+	--GREY200: #b5b5b5;
+	--GREY300: #949494;
+	--GREY400: #767676;
+	--GREY500: #595959;
+	--GREY600: #3d3d3d;
+
+	/* Green primary scale (base green for most UI) */
+	--primary17: #afe1ca;
+	--primary33: #69c79b;
+	--primary50: #19a966;
+	--primary67: #0b874d;
+	--primary83: #08663a;
+	--primary100: #064628;
+
+	/* Secondary / blue scale used for diagrams */
+	--secondary17: #b5dced;
+	--secondary33: #76bedd;
+	--secondary50: #349ecc;
+	--secondary67: #027db2;
+	--secondary83: #015f88;
+	--secondary100: #01415d;
+
+	/* Accent (pink / violet) used for highlights in the problem diagram */
+	--accent-217: #e4cff1;
+	--accent-233: #cda7e6;
+	--accent-250: #b57eda;
+	--accent-267: #9e54ce;
+	--accent-283: #8325c1;
+	--accent-2100: #5d0d91;
+
+	/* Other accents */
+	--accent-117: #e8d2b8;
+	--accent-133: #d7ae80;
+	--accent-150: #c38845;
+	--accent-167: #9b6c37;
+	--accent-183: #755229;
+	--accent-1100: #51381c;
+
+	/* Soft informational yellow used in solution nodes */
+	--accent-yellow: #fde68a;
+}
+
+/* Center chart and position label/button */
+/* Outer container to center everything */
+.food-chart-outer-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	margin: 2rem 0;
+}
+
+.food-chart-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 2.5rem;
+	width: auto;
+}
+
+.food-chart-wrapper {
+	width: 350px;
+	height: 350px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#foodEmissionsChart {
+	width: 100% !important;
+	height: 100% !important;
+	max-width: 350px;
+	max-height: 350px;
+}
+
+
+.chart-label {
+	margin-left: 1.5rem;
+	background: var(--primary50);
+	color: #fff;
+	padding: 1.5rem 2.5rem;
+	border-radius: 0.75rem;
+	font-size: 1.5rem;
+	font-weight: 700;
+	cursor: pointer;
+	box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+	transition: background 0.2s;
+	border: none;
+	position: relative;
+	right: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	white-space: nowrap;
+}
+
+.chart-label:hover {
+	background: var(--primary67);
+}

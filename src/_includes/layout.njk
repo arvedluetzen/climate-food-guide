@@ -4,28 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title }}</title>
-  <link href="/assets/css/main.css" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
 </head>
+
 <body class="bg-gray-50 text-gray-800 font-sans">
   <header class="p-6 bg-green-700 text-white text-center">
     <h1 class="text-3xl font-bold">Climate Food Guide</h1>
   </header>
 
-  <main class="max-w-5xl mx-auto p-6">
+  <main id="main-content" class="max-w-5xl mx-auto p-6">
     {{ content | safe }}
   </main>
 
-  <script>
-    // Basic modal toggle logic
-    document.addEventListener('click', (e) => {
-      if (e.target.matches('[data-modal-target]')) {
-        const modalId = e.target.getAttribute('data-modal-target');
-        document.getElementById(modalId).classList.remove('hidden');
-      }
-      if (e.target.matches('[data-close]')) {
-        e.target.closest('.modal').classList.add('hidden');
-      }
-    });
-  </script>
+  <footer class="p-6 text-center text-gray-500">
+    © Climate Food Guide
+  </footer>
+
+  <script src="/assets/js/go.js"></script>
+  <script src="/assets/js/colors.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/intro.js"></script>
+  <script src="/assets/js/problem.js"></script>
+  <script src="/assets/js/solutions.js"></script>
+  <script src="/assets/js/actions.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 </body>
 </html>
