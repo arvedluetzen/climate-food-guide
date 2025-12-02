@@ -5,8 +5,8 @@
   "scripts": {
     "start": "npm-run-all --parallel eleventy tailwind",
     "eleventy": "eleventy --serve --config=eleventy.config.js",
-    "tailwind": "tailwindcss -i ./src/assets/css/main.css -o ./_site/assets/css/main.css --watch",
-    "build": "tailwindcss -i ./src/assets/css/main.css -o ./_site/assets/css/main.css && eleventy --config=eleventy.config.js",
+    "tailwind": "tailwindcss -i ./src/assets/css/main.css -o ./src/assets/css/main.generated.css --watch",
+    "build": "tailwindcss -i ./src/assets/css/main.css -o ./src/assets/css/main.generated.css && ELEVENTY_ENV=production eleventy --config=eleventy.config.js",
     "deploy": "npm run build && gh-pages -d _site"
   },
   "devDependencies": {
