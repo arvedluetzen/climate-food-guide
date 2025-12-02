@@ -1,41 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Climate–Food Interactive Site</title>
-
-  <!-- Tailwind output file -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Climate Food Guide</title>
   <link rel="stylesheet" href="/assets/css/main.css">
-
-  <!-- Optional JS libraries (add more later) -->
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
 </head>
 
-<body class="bg-gray-50 text-gray-800 leading-relaxed">
+<body class="bg-gray-50 text-gray-800 font-sans">
+  <header class="p-6 bg-green-700 text-white text-center">
+    <h1 class="text-3xl font-bold">Climate Food Guide</h1>
+  </header>
 
-  <main class="max-w-3xl mx-auto px-4 py-10">
-    <h1>👋 Welcome to the Climate–Food Impact Project</h1>
-<p>This is a <strong>test page</strong> to confirm that Eleventy + Tailwind is working.</p>
-<p>If you can see this styled box, everything is running correctly:</p>
-<div class="bg-green-100 p-4 border border-green-300 rounded-xl my-6">
-  <p class="text-green-800 font-medium">
-    🌱 Tailwind CSS is working!
-  </p>
-</div>
-<p>And below is a test button to confirm JS loads:</p>
-<p><button class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700"
-        onclick="alert('JavaScript works! 🎉')">
-Click me
-</button></p>
-<hr>
-<p>More content coming soon…</p>
+  <main id="main-content" class="max-w-5xl mx-auto p-6">
+    <section class="py-12">
+  <h2 class="text-2xl font-bold mb-6 text-center">Making our Food Climate Neutral</h2>
+  <div class="food-chart-outer-container">
+    <div class="food-chart-container">
+      <div class="food-chart-wrapper">
+        <canvas id="foodEmissionsChart" class="w-full h-full"></canvas>
+      </div>
+      <button id="chartLabel" class="chart-label">Food 30%</button>
+    </div>
+  </div>
+</section>
+<section class="py-12 text-center">
+  <h2 class="text-2xl font-bold mb-6">Food System Framework</h2>
+    <div class="flex justify-center gap-3 mb-6">
+        <button class="diagram-view-btn active px-4 py-2 rounded font-semibold transition" data-view="plain" style="background-color: var(--primary17); color: var(--GREY600);">Plain View</button>
+        <button class="diagram-view-btn inactive px-4 py-2 rounded font-semibold transition" data-view="emissions" style="background-color: var(--accent-250); color: var(--GREY600);">Emissions</button>
+        <button class="diagram-view-btn inactive px-4 py-2 rounded font-semibold transition" data-view="system" style="background-color: var(--secondary17); color: var(--GREY600);">System</button>
+    </div>
+<p><style>
+.diagram-view-btn {
+cursor: pointer;
+border: 2px solid transparent;
+}
+.diagram-view-btn.active {
+border-color: var(--GREY600);
+box-shadow: 0 0 0 3px rgba(61, 61, 61, 0.08);
+}
+.diagram-view-btn.inactive {
+opacity: 0.7;
+}
+.diagram-view-btn:hover {
+opacity: 1;
+}
+</style></p>
+<p><div id="problemDiagram" style="width:100%; height:600px; border:0px solid var(--GREY300);"></div></p>
+</section>
+<section class="py-12 text-center">
+    <h2 class="text-2xl font-bold mb-6">Solutions Decision Tree</h2>
+    <p class="mb-4">Choose a branch to explore solutions. Click leaf nodes to open detail pages.</p>
+    <div id="solutionDiagram" style="width:100%; height:480px; margin:0 auto;"></div>
+</section>
+<section class="py-12 text-center">
+    <h2 class="text-2xl font-bold mb-6">What Actions Can We Take?</h2>
+    <p class="mb-4">Explore how different actions can influence positive change across different areas.</p>
+    <div id="actionsDiagram" class="my-8"></div>
+</section>
 
   </main>
 
+  <footer class="p-6 text-center text-gray-500">
+    © Climate Food Guide
+  </footer>
+
+  <script src="/assets/js/go.js"></script>
+  <script src="/assets/js/colors.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/intro.js"></script>
+  <script src="/assets/js/problem.js"></script>
+  <script src="/assets/js/solutions.js"></script>
+  <script src="/assets/js/actions.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
 </body>
 </html>
-
-
