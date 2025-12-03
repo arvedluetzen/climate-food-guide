@@ -1,45 +1,210 @@
 <div class="detail-page">
-  <button id="close-detail" class="bg-gray-700 text-white px-4 py-2 rounded mb-4">← Back</button>
-  <h1 class="text-3xl font-bold mb-4">Food System Emissions</h1>
-  <div class="detail-content space-y-4">
-    <h2>We cannot reach our climate goals if we don't address food Emissions</h2>
-<p>about 30% of all emissions come from the food system.</p>
+  <!-- Fixed close button in top right -->
+  <button id="close-detail" class="close-button">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </button>
+  <div class="detail-content">
+    <h1 class="detail-main-title">Food System Emissions</h1>
+    <h2>Key Ideas</h2>
+<ul>
+<li>Global Food production is responsible for 25% - 35% of GHG Emissions</li>
+<li>Business as usual food emissions alone would leave us with a 67% chance of staying below 2 degrees of warming.</li>
+</ul>
+<p>The global CO2-eq emissions (see this explanation) of the food system are around 30% of the total emissions or 15 billion tonnes of CO2-eq every year. To get an estimate for this number, researchers try to decompose emissions from the complete value chain and add them up. As you can see in the first graph there are differences between approximations. You can also get a first impression for which parts of the food production process contribute how much to the overall emissions.</p>
+<img src="/assets/img/1-intro/How-much-of-GHGs-come-from-food.png" alt="Breakdown of greenhouse gas emissions from food systems">
+<p>What does this share of food related emissions mean for achieving our climate goals? Using population growth estimates together with some other metrics it is possible to calculate the total emissions until 2100. Comparing number to the carbon budget for reaching 1.5 or 2 degrees it becomes apparent that even if we eliminated all other sources of emissions, our food would still emit enough CO2-eq to have a 67% chance of staying below 2 degrees. If we want to increase that chance we have to change something to emit less than the business usual scenario. &quot;Ignoring food emissions is simply not an option if we want to get close to our international climate targets.&quot; (Hannah Ritchie - Article 2)</p>
+<img src="/assets/img/1-intro/Food-emissions-vs-temp-limits.png" alt="Food emissions compared to temperature limits">
+<h1>Sources</h1>
+<p>Explanation of Plot 1: Where do Greenhouse Gase emissions in the food sector come from? Why do these estimates differ?:
+<a href="https://ourworldindata.org/greenhouse-gas-emissions-food" target="_blank">Our World in Data: How much of global greenhouse gas emissions come from food?</a></p>
+<p>Explanation of Plot 2: What role do food emissions play in reaching our climate goals? (and some ideas for how to reduce them):
+<a href="https://ourworldindata.org/food-emissions-carbon-budget" target="_blank">Our World in Data: Emissions from food alone could use up all of our budget for 1.5°C or 2°C – but we have a range of opportunities to avoid this</a></p>
+<p>A full decomposition of all emissions by sector. Food is not directly visible because the production process touches multiple parts (agriculture, transport, waste, electricity)
+<a href="https://ourworldindata.org/emissions-by-sector" target="_blank">Our World in Data: Breakdown of carbon dioxide, methane, and nitrous oxide emissions by sector</a></p>
+<p>Development of food sector emissions since 1990:
+<a href="https://ourworldindata.org/grapher/emissions-from-food?tab=line&country=OWID_WRL~USA~CAN" target="_blank">Our World in Data: Greenhouse gas emissions from food systems</a></p>
+<p>PRBLY TAKE OUT
+Source of Plot 3: (page 9)</p>
+<p>https://research.wri.org/sites/default/files/2019-07/WRR_Food_Full_Report_0.pdf#page=9.00</p>
 
   </div>
 </div>
 
 <style>
-  .detail-content h2 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-top: 1.5rem;
-    margin-bottom: 0.75rem;
+  .detail-page {
+    max-width: 100%;
+    margin: 0 auto;
+    padding-top: 2rem;
   }
-  .detail-content h3 {
+
+  /* Fixed close button - top right corner */
+  .close-button {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
+    background: white;
+    border: 2px solid var(--primary50);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    color: var(--primary50);
+  }
+
+  .close-button:hover {
+    background: var(--primary50);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Content area with narrow column */
+  .detail-content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Main title - simple, green, within text column */
+  .detail-main-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary67);
+    margin: 0 0 2rem 0;
+    line-height: 1.2;
+  }
+
+  /* Key Ideas box: style the first h2 (regardless of title before it) */
+  .detail-content h2:first-of-type {
+    background: var(--accent-yellow);
+    color: #4b4b4b;
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem 0.75rem 0 0;
     font-size: 1.25rem;
-    font-weight: 600;
-    margin-top: 1rem;
+    font-weight: 700;
+    margin: 0;
+    border-left: 4px solid var(--primary50);
+    border-bottom: none;
+  }
+
+  .detail-content h2:first-of-type + ul {
+    background: var(--accent-yellow);
+    padding: 0 1.5rem 1.25rem 2.5rem;
+    border-radius: 0 0 0.75rem 0.75rem;
+    margin: 0 0 2rem 0;
+    border-left: 4px solid var(--primary50);
+    list-style: disc;
+  }
+
+  .detail-content h2:first-of-type + ul li {
     margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: #4b4b4b;
+    text-align: justify;
   }
+
+  /* Regular paragraphs - justified text */
   .detail-content p {
-    font-size: 1rem;
-    line-height: 1.5;
-    margin-bottom: 0.75rem;
+    text-align: justify;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+    color: #374151;
   }
+
+  /* Regular lists (not in Key Ideas) */
   .detail-content ul {
     list-style: disc;
-    margin-left: 1.25rem;
-    margin-bottom: 0.75rem;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: justify;
   }
+
   .detail-content li {
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: #374151;
   }
+
+  /* Images - centered within column */
+  .detail-content img {
+    display: block;
+    margin: 2rem auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 900px) {
+    .detail-content img {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  /* Section headings (Sources, Further Reading) */
+  .detail-content h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--primary50);
+    color: var(--primary67);
+  }
+
+  .detail-content h1:first-child {
+    margin-top: 0;
+    border-bottom: none;
+  }
+
+  /* Links */
   .detail-content a {
     color: var(--secondary50);
-    text-decoration: underline;
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid var(--secondary33);
+    transition: all 0.2s;
   }
+
   .detail-content a:hover {
     color: var(--secondary67);
+    border-bottom-color: var(--secondary67);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .detail-header {
+      padding: 1.5rem 1rem;
+      margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+    }
+
+    .detail-title {
+      font-size: 1.75rem;
+    }
+
+    .detail-content {
+      padding: 0 1rem;
+    }
+
+    .detail-content h1 {
+      font-size: 1.5rem;
+    }
+
+    .detail-content p {
+      font-size: 1rem;
+    }
   }
 </style>
+
+<!-- No scroll-awareness for now to avoid layout issues -->
 

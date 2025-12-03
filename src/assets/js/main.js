@@ -29,9 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Setup close button handler (event delegation)
+  // Setup close button handler (event delegation, robust to inner SVG clicks)
   document.addEventListener('click', (e) => {
-    if (e.target.id === 'close-detail') {
+    const closeBtn = e.target.closest('#close-detail');
+    if (closeBtn) {
       goBackToPreviousView(mainContent);
     }
   });
