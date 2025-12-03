@@ -69,25 +69,29 @@ function createDiagramNodeTemplate() {
   const $ = go.GraphObject.make;
 
   const template = new go.Node('Auto')
+    .set({ locationSpot: go.Spot.Center })
     .add(
       new go.Shape('RoundedRectangle')
         .bind('fill', 'color')
         .bind('opacity', 'isVisible', v => v ? 1 : 0),
       new go.TextBlock({
-        font: '32px sans-serif',
-        margin: new go.Margin(18, 24, 18, 24),
+        font: '42px sans-serif',
+        margin: new go.Margin(20, 28, 20, 28),
         textAlign: 'center',
         stroke: '#000000',
         wrap: go.TextBlock.WrapDesiredSize
       })
         .bind('text', '', d => (d && d.emoji ? (d.emoji + ' ' + (d.text || '')) : (d.text || '')))
         .bind('opacity', 'isVisible', v => v ? 1 : 0)
-        .bind('maxSize', 'key', k => k === 1000 ? new go.Size(NaN, NaN) : new go.Size(260, NaN))
+        .bind('maxSize', 'key', k => k === 1000 ? new go.Size(NaN, NaN) : new go.Size(2000, NaN))
     );
+  // Support manual positioning via data.loc if present
+  template.bind(new go.Binding('location', 'loc', go.Point.parse).makeTwoWay(go.Point.stringify));
 
   // Add click handler to template
   template.click = function(e, node) {
     const data = node.data;
+    console.debug('[solutions] click', data);
     // Only allow clicks on visible nodes
     if (!data.isVisible) return;
     
@@ -98,6 +102,7 @@ function createDiagramNodeTemplate() {
       openDetailPage(document.getElementById('main-content'), data.source);
     } else if (data.type !== 'leaf') {
       // Click on branch or root node - update selected path and show subtree
+      console.debug('[solutions] selectNode', data.key);
       selectNode(data.key);
     }
   };
@@ -123,6 +128,7 @@ function getChildrenOf(nodeKey) {
  * - Only show grandchildren for selected branches (not for non-selected siblings)
  */
 function selectNode(nodeKey) {
+  console.debug('[solutions] selectNode called', nodeKey);
   // Build path from root to selected node
   const newPath = [];
   let current = nodeKey;
@@ -132,7 +138,8 @@ function selectNode(nodeKey) {
   }
 
   window.selectedPath = newPath;
-  updateTreeVisibility();
+  console.debug('[solutions] newPath', newPath);
+  rebuildDiagramForSelection();
 }
 
 function updateTreeVisibility() {
@@ -188,8 +195,100 @@ function updateTreeVisibility() {
     diagram.model.setDataProperty(linkData, 'isVisible', shouldShow);
   });
 
-  // Smooth layout animation
-  diagram.layoutDiagram(true);
+  // Do not trigger a relayout or animation; preserve positions
+  // This avoids confusing movement when toggling visibility
+  // If needed later, a manual zoomToFit without animation can be applied
+  // diagram.layoutDiagram(false);
+}
+
+function computeVisibleSetFromPath(path) {
+  const nodesToShow = new Set();
+  const root = solutionsNodes.find(n => n.type === 'root');
+  nodesToShow.add(root.key);
+
+  for (let i = 0; i < path.length; i++) {
+    const currentKey = path[i];
+    const parentKey = i > 0 ? path[i - 1] : null;
+    nodesToShow.add(currentKey);
+    if (parentKey !== null) {
+      const siblings = getChildrenOf(parentKey);
+      siblings.forEach(k => nodesToShow.add(k));
+    }
+    if (i === path.length - 1) {
+      const children = getChildrenOf(currentKey);
+      children.forEach(childKey => {
+        nodesToShow.add(childKey);
+        if (path.length >= 3) {
+          const gcs = getChildrenOf(childKey);
+          gcs.forEach(gc => nodesToShow.add(gc));
+        }
+      });
+    }
+  }
+  return nodesToShow;
+}
+
+function rebuildDiagramForSelection() {
+  const diagram = window.solutionDiagram;
+  if (!diagram) return;
+  console.debug('[solutions] rebuildDiagramForSelection start');
+
+  const path = window.selectedPath && window.selectedPath.length ? window.selectedPath : [1000];
+  const nodesToShow = computeVisibleSetFromPath(path);
+  console.debug('[solutions] nodesToShow', Array.from(nodesToShow));
+  window.visibleNodes = nodesToShow;
+
+  // Capture previous positions to preserve shared nodes
+  const prevPositions = new Map();
+  solutionsNodes.forEach(n => {
+    const part = diagram.findPartForKey(n.key);
+    if (part && part.location) {
+      prevPositions.set(n.key, part.location.copy());
+    }
+  });
+
+  // Build model arrays containing only visible nodes/links
+  const nodeArray = solutionsNodes
+    .filter(n => nodesToShow.has(n.key))
+    .map(n => ({
+      ...n,
+      color: getNodeColor(n),
+      isVisible: true
+    }));
+
+  const linkArray = solutionsLinks.filter(l => nodesToShow.has(l.from) && nodesToShow.has(l.to));
+
+  // Replace model after the click transaction completes to avoid errors
+  setTimeout(() => {
+    const newModel = new go.GraphLinksModel(nodeArray, linkArray);
+    diagram.model = newModel;
+    console.debug('[solutions] model replaced', nodeArray.length, linkArray.length);
+
+    // Restore positions for nodes present in both versions
+    diagram.nodes.each(node => {
+      const key = node.data.key;
+      const prev = prevPositions.get(key);
+      if (prev) {
+        node.location = prev;
+      } else {
+        // For new nodes, position near parent to keep things sensible
+        const parentKey = getParentOf(key);
+        const parentPart = parentKey != null ? diagram.findPartForKey(parentKey) : null;
+        const base = parentPart && parentPart.location ? parentPart.location.copy() : new go.Point(0, 0);
+        const idx = getChildrenOf(parentKey || key).indexOf(key);
+        node.location = new go.Point(base.x + (idx * 260), base.y + 150);
+      }
+    });
+
+    // Ensure links are visible in the subgraph
+    diagram.links.each(link => {
+      diagram.model.setDataProperty(link.data, 'isVisible', true);
+    });
+
+    // Run a quick non-animated layout and fit once to center content nicely
+    try { diagram.layoutDiagram(false); } catch (e) {}
+    try { diagram.zoomToFit(); } catch (e) {}
+  }, 0);
 }
 
 function initializeSolutionDiagram() {
@@ -212,6 +311,12 @@ function initializeSolutionDiagram() {
     scrollMode: go.Diagram.XYScroll,
     'toolManager.mouseWheelBehavior': go.ToolManager.WheelNone
   });
+
+  // Disable animations to prevent confusing rebuild motion
+  diagram.animationManager.isEnabled = false;
+  if (go.AnimationManager && diagram.animationManager) {
+    diagram.animationManager.initialAnimationStyle = go.AnimationManager.None;
+  }
 
   // Use the template function that includes click handler
   diagram.nodeTemplate = createDiagramNodeTemplate();
@@ -242,8 +347,15 @@ function initializeSolutionDiagram() {
   
   // Auto-scale diagram to fit container
   setTimeout(() => {
-    smoothZoomToFit(diagram, 350);
+    // Fit once on init without animation to get viewport bounds
+    try { diagram.zoomToFit(); } catch (e) {}
+
   }, 100);
+
+  // Immediately apply the same centering behavior as clicking the parent once
+  setTimeout(() => {
+    try { selectNode(1000); } catch (e) {}
+  }, 120);
 }
 
 // Smoothly animate diagram to fit the viewport without a jump
