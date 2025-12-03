@@ -11,10 +11,10 @@ function tc(name, fallback) {
 
 // Base nodes (always present)
 const baseNodes = [
-    { key: 1, text: "Plants", baseColor: tc('primary17', '#86efac'), source: "plants" },
-    { key: 2, text: "Animals", baseColor: tc('primary17', '#86efac'), source: null },
-    { key: 3, text: "Processing", baseColor: tc('primary17', '#86efac'), source: null },
-    { key: 4, text: "Food", baseColor: tc('primary17', '#86efac'), source: null }
+    { key: 1, text: "Plants", emoji: "🌱", baseColor: tc('primary17', '#bbf7d0'), source: "plants" },
+    { key: 2, text: "Animals", emoji: "🐄", baseColor: tc('primary17', '#bbf7d0'), source: null },
+    { key: 3, text: "Processing", emoji: "⚙️", baseColor: tc('primary17', '#bbf7d0'), source: null },
+    { key: 4, text: "Food", emoji: "🍽️", baseColor: tc('primary17', '#bbf7d0'), source: null }
 ];
 
 // Base links
@@ -28,11 +28,11 @@ const baseLinks = [
 
 // Emissions view overlay nodes
 const emissionsOverlayNodes = [
-    { key: 101, text: "Land Use", color: tc('accent-250', '#f472b6'), type: "overlay" },
-    { key: 102, text: "Fertilizer", color: tc('accent-250', '#f472b6'), type: "overlay" },
-    { key: 103, text: "CO2eq", color: tc('accent-250', '#f472b6'), type: "overlay" },
-    { key: 104, text: "Transport", color: tc('accent-250', '#f472b6'), type: "overlay" },
-    { key: 105, text: "Comparison", color: tc('accent-250', '#f472b6'), type: "overlay" }
+    { key: 101, text: "Land Use", emoji: "🌍", color: tc('accent-250', '#fbcfe8'), type: "overlay" },
+    { key: 102, text: "Fertilizer", emoji: "🧪", color: tc('accent-250', '#fbcfe8'), type: "overlay" },
+    { key: 103, text: "CO2eq", emoji: "💨", color: tc('accent-250', '#fbcfe8'), type: "overlay" },
+    { key: 104, text: "Transport", emoji: "🚚", color: tc('accent-250', '#fbcfe8'), type: "overlay" },
+    { key: 105, text: "Comparison", emoji: "🥩🆚🥦", color: tc('accent-250', '#fbcfe8'), type: "overlay" }
 ];
 
 // Emissions view overlay links
@@ -51,10 +51,10 @@ const emissionsOverlayLinks = [
 
 // System view overlay nodes
 const systemOverlayNodes = [
-    { key: 201, text: "Land", color: tc('secondary33', '#93c5fd'), type: "overlay" },
-    { key: 202, text: "Efficiency", color: tc('secondary33', '#93c5fd'), type: "overlay" },
-    { key: 203, text: "Choice", color: tc('secondary33', '#93c5fd'), type: "overlay" },
-    { key: 204, text: "Waste", color: tc('secondary33', '#93c5fd'), type: "overlay" }
+    { key: 201, text: "Land", emoji: "🌍", color: tc('secondary33', '#dbeafe'), type: "overlay" },
+    { key: 202, text: "Efficiency", emoji: "⚡", color: tc('secondary33', '#dbeafe'), type: "overlay" },
+    { key: 203, text: "Choice", emoji: "🤔", color: tc('secondary33', '#dbeafe'), type: "overlay" },
+    { key: 204, text: "Waste", emoji: "🗑️", color: tc('secondary33', '#dbeafe'), type: "overlay" }
 ];
 
 // System view overlay links
@@ -92,22 +92,22 @@ const baseLinksToRemove = {
 function getViewThemes() {
     return {
         plain: {
-            1: tc('primary17', '#86efac'),
-            2: tc('primary17', '#86efac'),
-            3: tc('primary17', '#86efac'),
-            4: tc('primary17', '#86efac')
+            1: tc('primary17', '#bbf7d0'),
+            2: tc('primary17', '#bbf7d0'),
+            3: tc('primary17', '#bbf7d0'),
+            4: tc('primary17', '#bbf7d0')
         },
         emissions: {
-            1: tc('accent-250', '#f472b6'),
-            2: tc('accent-250', '#f472b6'),
-            3: tc('accent-250', '#f472b6'),
-            4: tc('primary17', '#86efac')
+            1: tc('accent-250', '#fbcfe8'),
+            2: tc('accent-250', '#fbcfe8'),
+            3: tc('accent-250', '#fbcfe8'),
+            4: tc('primary17', '#bbf7d0')
         },
         system: {
-            1: tc('primary17', '#86efac'),
-            2: tc('primary17', '#86efac'),
-            3: tc('primary17', '#86efac'),
-            4: tc('primary17', '#86efac')
+            1: tc('primary17', '#bbf7d0'),
+            2: tc('primary17', '#bbf7d0'),
+            3: tc('primary17', '#bbf7d0'),
+            4: tc('primary17', '#bbf7d0')
         }
     };
 }
@@ -134,8 +134,28 @@ function initializeProblemDiagram() {
         .add(
         new go.Shape("RoundedRectangle")
             .bind("fill", "color"),
-        new go.TextBlock({ margin: 8, font: "12px sans-serif", textAlign: "center", wrap: go.TextBlock.WrapDesiredSize })
-            .bind("text"),
+        new go.Panel("Vertical", {
+            margin: 8,
+            alignment: go.Spot.Center,
+            defaultAlignment: go.Spot.Center
+        })
+            .add(
+                new go.TextBlock({ 
+                    font: "36px sans-serif", 
+                    margin: 2,
+                    textAlign: "center"
+                })
+                    .bind("text", "emoji"),
+                new go.TextBlock({ 
+                    margin: 4, 
+                    font: "12px sans-serif", 
+                    textAlign: "center",
+                    stroke: "#000000",
+                    wrap: go.TextBlock.WrapDesiredSize,
+                    maxSize: new go.Size(90, NaN)
+                })
+                    .bind("text")
+            )
     );
     
     diagram.nodeTemplate.click = function(e, node) {

@@ -60,7 +60,11 @@ async function openDetailPage(mainContent, source) {
     // Normalize the source path to built HTML
     const path = source.startsWith('details/') ? source : `details/${source}`;
     const cleanPath = path.endsWith('.md') ? path.replace('.md', '') : path;
-    const url = `/${cleanPath}/index.html`;
+
+    // Use window.BASE_URL set in the page (falls back to '/') so
+    // fetches work both locally and on GitHub Pages subpaths.
+    const base = (typeof window !== 'undefined' && window.BASE_URL) ? window.BASE_URL : '/';
+    const url = `${base}${cleanPath}/index.html`;
     
     const response = await fetch(url);
     if (!response.ok) throw new Error(`Failed to load ${url}`);

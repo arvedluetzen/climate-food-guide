@@ -6,48 +6,62 @@ window.diagramReloadHandlers = window.diagramReloadHandlers || [];
 
 // Full tree nodes with single root
 const solutionsNodes = [
-  { key: 1000, text: 'What could we change?', type: 'root' },
+  { key: 1000, text: 'What could we change?', emoji: '❓', type: 'root' },
 
-  { key: 1001, text: 'Consumption', type: 'branch' },
-  { key: 1002, text: 'Production', type: 'branch' },
+  { key: 1001, text: 'Consumption', emoji: '🍴', type: 'branch' },
+  { key: 1002, text: 'Production', emoji: '🏭', type: 'branch' },
 
   // Consumption children
-  { key: 1101, text: 'Different', type: 'branch' },
-  { key: 1102, text: 'Less', type: 'branch' },
+  { key: 1110, text: 'eating DIFFERENT food', emoji: '🔄', type: 'branch' },
+  { key: 1120, text: 'REDUCING demand', emoji: '📉️', type: 'branch' },
 
   // Production children
-  { key: 1201, text: 'Efficiency', type: 'branch' },
-  { key: 1202, text: 'Different', type: 'branch' },
+  { key: 1210, text: 'making it more EFFICIENCY', emoji: '⚡', type: 'branch' },
+  { key: 1220, text: 'finding DIFFERENT processes', emoji: '🧫', type: 'branch' },
 
   // Sample leaf articles for each branch
-  { key: 2001, text: 'Article A', type: 'leaf', source: '1-emissions-overview' },
-  { key: 2002, text: 'Article B', type: 'leaf', source: 'plants' },
-  { key: 2003, text: 'Article C', type: 'leaf' },
-  { key: 2004, text: 'Article D', type: 'leaf' }
+  { key: 2111, text: 'Impact?', emoji: '📄', type: 'leaf', source: '1-emissions-overview' },
+  { key: 2112, text: 'How?', emoji: '📄', type: 'leaf', source: 'plants' },
+  { key: 2121, text: 'Foodwaste', emoji: '📄', type: 'leaf' },
+  { key: 2122, text: 'Demand', emoji: '📄', type: 'leaf' },
+  { key: 2211, text: 'Plants', emoji: '📄', type: 'leaf' },
+  { key: 2212, text: 'Animals', emoji: '📄', type: 'leaf' },
+  { key: 2213, text: 'Electrify', emoji: '📄', type: 'leaf' },
+  { key: 2221, text: 'Idea!', emoji: '📄', type: 'leaf' },
+  { key: 2222, text: 'How?', emoji: '📄', type: 'leaf' },
+  { key: 2223, text: 'Price?', emoji: '📄', type: 'leaf' },
+  { key: 2224, text: 'Demand?', emoji: '📄', type: 'leaf' }
 ];
 
 // Links: connect roots -> branches -> leaves
 const solutionsLinks = [
   { from: 1000, to: 1001 },
   { from: 1000, to: 1002 },
-  { from: 1001, to: 1101 },
-  { from: 1001, to: 1102 },
-  { from: 1002, to: 1201 },
-  { from: 1002, to: 1202 },
+  { from: 1001, to: 1110 },
+  { from: 1001, to: 1120 },
+  { from: 1002, to: 1210 },
+  { from: 1002, to: 1220 },
 
   // attach sample leaves
-  { from: 1101, to: 2001 },
-  { from: 1101, to: 2002 },
-  { from: 1201, to: 2003 },
-  { from: 1202, to: 2004 }
+  { from: 1110, to: 2111 },
+  { from: 1110, to: 2112 },
+  { from: 1120, to: 2121 },
+  { from: 1120, to: 2122 },
+  { from: 1210, to: 2211 },
+  { from: 1210, to: 2212 },
+  { from: 1210, to: 2213 },
+  { from: 1220, to: 2221 },
+  { from: 1220, to: 2222 },
+  { from: 1220, to: 2223 },
+  { from: 1220, to: 2224 }
 ];
 
 function getNodeColor(node) {
   // Try to read colors from themeColors, fall back to previous hard-coded values
   const tc = (name, fallback) => (window.themeColors && window.themeColors[name]) || fallback;
   if (node.type === 'root') return tc('primary17', '#bbf7d0');
-  if (node.type === 'branch') return tc('secondary33', '#bfdbfe');
-  if (node.type === 'leaf') return tc('accent-yellow', '#fde68a');
+  if (node.type === 'branch') return tc('accent-yellow', '#fef3c7');
+  if (node.type === 'leaf') return tc('secondary33', '#dbeafe');
   return tc('GREY100', '#e5e7eb');
 }
 
@@ -59,15 +73,16 @@ function createDiagramNodeTemplate() {
       new go.Shape('RoundedRectangle')
         .bind('fill', 'color')
         .bind('opacity', 'isVisible', v => v ? 1 : 0),
-      new go.TextBlock({ 
-        margin: 8, 
-        font: '13px sans-serif',
+      new go.TextBlock({
+        font: '32px sans-serif',
+        margin: new go.Margin(18, 24, 18, 24),
         textAlign: 'center',
-        wrap: go.TextBlock.WrapDesiredSize,
-        maxSize: new go.Size(100, NaN)
+        stroke: '#000000',
+        wrap: go.TextBlock.WrapDesiredSize
       })
-        .bind('text')
+        .bind('text', '', d => (d && d.emoji ? (d.emoji + ' ' + (d.text || '')) : (d.text || '')))
         .bind('opacity', 'isVisible', v => v ? 1 : 0)
+        .bind('maxSize', 'key', k => k === 1000 ? new go.Size(NaN, NaN) : new go.Size(260, NaN))
     );
 
   // Add click handler to template
@@ -189,10 +204,11 @@ function initializeSolutionDiagram() {
     layout: $(go.TreeLayout, { 
       angle: 90, 
       arrangement: go.TreeLayout.ArrangementHorizontal,
-      nodeSpacing: 40,
-      layerSpacing: 80
+      nodeSpacing: 60,
+      layerSpacing: 120
     }),
     'undoManager.isEnabled': true,
+    initialContentAlignment: go.Spot.Center,
     scrollMode: go.Diagram.XYScroll,
     'toolManager.mouseWheelBehavior': go.ToolManager.WheelNone
   });
