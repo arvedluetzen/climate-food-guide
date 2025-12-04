@@ -16,12 +16,11 @@
     --color-blue-700: oklch(48.8% 0.243 264.376);
     --color-gray-50: oklch(98.5% 0.002 247.839);
     --color-gray-500: oklch(55.1% 0.027 264.364);
-    --color-gray-700: oklch(37.3% 0.034 259.733);
     --color-gray-800: oklch(27.8% 0.033 256.848);
     --color-white: #fff;
     --spacing: 0.25rem;
     --container-3xl: 48rem;
-    --container-5xl: 64rem;
+    --container-6xl: 72rem;
     --text-2xl: 1.5rem;
     --text-2xl--line-height: calc(2 / 1.5);
     --text-3xl: 1.875rem;
@@ -235,6 +234,9 @@
   .block {
     display: block;
   }
+  .contents {
+    display: contents;
+  }
   .flex {
     display: flex;
   }
@@ -244,14 +246,11 @@
   .hidden {
     display: none;
   }
-  .h-full {
-    height: 100%;
-  }
   .w-full {
     width: 100%;
   }
-  .max-w-5xl {
-    max-width: var(--container-5xl);
+  .max-w-6xl {
+    max-width: var(--container-6xl);
   }
   .shrink {
     flex-shrink: 1;
@@ -262,18 +261,17 @@
   .resize {
     resize: both;
   }
+  .flex-col {
+    flex-direction: column;
+  }
+  .items-center {
+    align-items: center;
+  }
   .justify-center {
     justify-content: center;
   }
   .gap-3 {
     gap: calc(var(--spacing) * 3);
-  }
-  .space-y-4 {
-    :where(& > :not(:last-child)) {
-      --tw-space-y-reverse: 0;
-      margin-block-start: calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));
-      margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));
-    }
   }
   .rounded {
     border-radius: 0.25rem;
@@ -284,9 +282,6 @@
   }
   .bg-gray-50 {
     background-color: var(--color-gray-50);
-  }
-  .bg-gray-700 {
-    background-color: var(--color-gray-700);
   }
   .bg-green-700 {
     background-color: var(--color-green-700);
@@ -305,6 +300,9 @@
   }
   .text-center {
     text-align: center;
+  }
+  .text-justify {
+    text-align: justify;
   }
   .font-sans {
     font-family: var(--font-sans);
@@ -356,6 +354,21 @@
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
+  .md\:w-1\/2 {
+    @media (width >= 48rem) {
+      width: calc(1/2 * 100%);
+    }
+  }
+  .md\:flex-row {
+    @media (width >= 48rem) {
+      flex-direction: row;
+    }
+  }
+  .md\:gap-8 {
+    @media (width >= 48rem) {
+      gap: calc(var(--spacing) * 8);
+    }
+  }
 }
 :root {
   --background: #ffffff;
@@ -391,6 +404,13 @@
   --accent-1100: #51381c;
   --accent-yellow: #fde68a;
 }
+ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+}
+ol li {
+  display: list-item;
+}
 .food-chart-outer-container {
   display: flex;
   flex-direction: column;
@@ -424,10 +444,10 @@
   margin-left: 1.5rem;
   background: var(--primary50);
   color: #fff;
-  padding: 1.5rem 2.5rem;
+  padding: 1.25rem 2rem;
   border-radius: 0.75rem;
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
   box-shadow: 0 2px 12px rgba(0,0,0,0.10);
   transition: background 0.2s;
@@ -437,6 +457,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  line-height: 1.4;
   white-space: nowrap;
 }
 .chart-label:hover {
@@ -461,11 +483,6 @@
 @property --tw-skew-y {
   syntax: "*";
   inherits: false;
-}
-@property --tw-space-y-reverse {
-  syntax: "*";
-  inherits: false;
-  initial-value: 0;
 }
 @property --tw-border-style {
   syntax: "*";
@@ -542,7 +559,6 @@
       --tw-rotate-z: initial;
       --tw-skew-x: initial;
       --tw-skew-y: initial;
-      --tw-space-y-reverse: 0;
       --tw-border-style: solid;
       --tw-font-weight: initial;
       --tw-outline-style: solid;

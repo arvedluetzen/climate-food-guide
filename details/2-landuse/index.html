@@ -6,17 +6,8 @@
     </svg>
   </button>
   <div class="detail-content">
-    <h1 class="detail-main-title">Plants</h1>
-    <h2>Why Plants Matter</h2>
-<p>Plant-based foods generally have a lower carbon footprint compared to animal-based foods.</p>
-<h3>Key Points</h3>
-<ul>
-<li>Lower land use</li>
-<li>Lower emissions</li>
-<li>Higher efficiency</li>
-</ul>
-<p><a href="https://ourworldindata.org/less-meat-or-sustainable-meat">Read more</a></p>
-
+    <h1 class="detail-main-title">What happens when we change the use of land?</h1>
+    
   </div>
 </div>
 
@@ -116,6 +107,14 @@
     text-align: justify;
   }
 
+  /* Ordered/numbered lists */
+  .detail-content ol {
+    list-style: decimal;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: justify;
+  }
+
   .detail-content li {
     margin-bottom: 0.5rem;
     line-height: 1.6;
@@ -169,6 +168,64 @@
     border-bottom-color: var(--secondary67);
   }
 
+  /* Blockquotes - for longer quotes */
+  .detail-content blockquote {
+    background: linear-gradient(135deg, #f9fafb, #f3f4f6);
+    border-left: 4px solid var(--primary50);
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0.5rem;
+    font-style: italic;
+    color: #374151;
+    position: relative;
+  }
+
+  .detail-content blockquote p {
+    margin-bottom: 0.5rem;
+  }
+
+  .detail-content blockquote p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Quote attribution - use a cite or em at the end */
+  .detail-content blockquote cite,
+  .detail-content blockquote .quote-source {
+    display: block;
+    font-style: normal;
+    font-size: 0.95rem;
+    margin-top: 0.75rem;
+    color: var(--primary67);
+    font-weight: 600;
+  }
+
+  .detail-content blockquote cite::before,
+  .detail-content blockquote .quote-source::before {
+    content: "— ";
+  }
+
+  /* Inline quotes with <q> tag or wrapped quotes */
+  .detail-content q {
+    font-style: italic;
+    color: var(--primary67);
+    quotes: """ """ "'" "'";
+  }
+
+  /* Inline quote citations - superscript link after quote */
+  .detail-content sup a {
+    font-size: 0.75em;
+    color: var(--secondary50);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: none;
+    padding: 0 0.15em;
+  }
+
+  .detail-content sup a:hover {
+    color: var(--secondary67);
+    text-decoration: underline;
+  }
+
   /* Responsive adjustments */
   @media (max-width: 768px) {
     .detail-header {
@@ -195,4 +252,22 @@
 </style>
 
 <!-- No scroll-awareness for now to avoid layout issues -->
+
+<script>
+  // Ensure all citation/reference links open in a new tab
+  (function() {
+    const container = document.querySelector('.detail-content');
+    if (!container) return;
+    const links = container.querySelectorAll('a');
+    links.forEach(a => {
+      const href = a.getAttribute('href') || '';
+      // Treat absolute URLs as external references
+      if (href.startsWith('http')) {
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener');
+      }
+    });
+  })();
+  
+</script>
 

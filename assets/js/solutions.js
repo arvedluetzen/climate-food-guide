@@ -6,48 +6,62 @@ window.diagramReloadHandlers = window.diagramReloadHandlers || [];
 
 // Full tree nodes with single root
 const solutionsNodes = [
-  { key: 1000, text: 'What could we change?', type: 'root' },
+  { key: 1000, text: 'What could we change?', emoji: '❓', type: 'root' },
 
-  { key: 1001, text: 'Consumption', type: 'branch' },
-  { key: 1002, text: 'Production', type: 'branch' },
+  { key: 1001, text: 'Consumption', emoji: '🍴', type: 'branch' },
+  { key: 1002, text: 'Production', emoji: '🏭', type: 'branch' },
 
   // Consumption children
-  { key: 1101, text: 'Different', type: 'branch' },
-  { key: 1102, text: 'Less', type: 'branch' },
+  { key: 1110, text: 'eating DIFFERENT food', emoji: '🔄', type: 'branch' },
+  { key: 1120, text: 'REDUCING demand', emoji: '📉️', type: 'branch' },
 
   // Production children
-  { key: 1201, text: 'Efficiency', type: 'branch' },
-  { key: 1202, text: 'Different', type: 'branch' },
+  { key: 1210, text: 'making it more EFFICIENCY', emoji: '⚡', type: 'branch' },
+  { key: 1220, text: 'finding DIFFERENT processes', emoji: '🧫', type: 'branch' },
 
   // Sample leaf articles for each branch
-  { key: 2001, text: 'Article A', type: 'leaf', source: '1-emissions-overview' },
-  { key: 2002, text: 'Article B', type: 'leaf', source: 'plants' },
-  { key: 2003, text: 'Article C', type: 'leaf' },
-  { key: 2004, text: 'Article D', type: 'leaf' }
+  { key: 2111, text: 'Impact?', emoji: '📄', type: 'leaf', source: '3-less-meat' },
+  { key: 2112, text: 'How?', emoji: '📄', type: 'leaf', source: '3-convincing' },
+  { key: 2121, text: 'Foodwaste', emoji: '📄', type: 'leaf', source: '3-foodwaste' },
+  { key: 2122, text: 'Demand', emoji: '📄', type: 'leaf', source: '3-food-demand' },
+  { key: 2211, text: 'Plants', emoji: '📄', type: 'leaf', source: '3-better-plants' },
+  { key: 2212, text: 'Animals', emoji: '📄', type: 'leaf', source: '3-better-animal' },
+  { key: 2213, text: 'Electrify', emoji: '📄', type: 'leaf', source: '3-electrify' },
+  { key: 2221, text: 'Idea!', emoji: '📄', type: 'leaf', source: '3-altprotein-why' },
+  { key: 2222, text: 'How?', emoji: '📄', type: 'leaf', source: '3-altprotein-overview' },
+  { key: 2223, text: 'Price?', emoji: '📄', type: 'leaf', source: '3-altprotein-cost' },
+  { key: 2224, text: 'Demand?', emoji: '📄', type: 'leaf', source: '3-altprotein-demand' }
 ];
 
 // Links: connect roots -> branches -> leaves
 const solutionsLinks = [
   { from: 1000, to: 1001 },
   { from: 1000, to: 1002 },
-  { from: 1001, to: 1101 },
-  { from: 1001, to: 1102 },
-  { from: 1002, to: 1201 },
-  { from: 1002, to: 1202 },
+  { from: 1001, to: 1110 },
+  { from: 1001, to: 1120 },
+  { from: 1002, to: 1210 },
+  { from: 1002, to: 1220 },
 
   // attach sample leaves
-  { from: 1101, to: 2001 },
-  { from: 1101, to: 2002 },
-  { from: 1201, to: 2003 },
-  { from: 1202, to: 2004 }
+  { from: 1110, to: 2111 },
+  { from: 1110, to: 2112 },
+  { from: 1120, to: 2121 },
+  { from: 1120, to: 2122 },
+  { from: 1210, to: 2211 },
+  { from: 1210, to: 2212 },
+  { from: 1210, to: 2213 },
+  { from: 1220, to: 2221 },
+  { from: 1220, to: 2222 },
+  { from: 1220, to: 2223 },
+  { from: 1220, to: 2224 }
 ];
 
 function getNodeColor(node) {
   // Try to read colors from themeColors, fall back to previous hard-coded values
   const tc = (name, fallback) => (window.themeColors && window.themeColors[name]) || fallback;
   if (node.type === 'root') return tc('primary17', '#bbf7d0');
-  if (node.type === 'branch') return tc('secondary33', '#bfdbfe');
-  if (node.type === 'leaf') return tc('accent-yellow', '#fde68a');
+  if (node.type === 'branch') return tc('accent-yellow', '#fef3c7');
+  if (node.type === 'leaf') return tc('secondary33', '#dbeafe');
   return tc('GREY100', '#e5e7eb');
 }
 
@@ -55,24 +69,29 @@ function createDiagramNodeTemplate() {
   const $ = go.GraphObject.make;
 
   const template = new go.Node('Auto')
+    .set({ locationSpot: go.Spot.Center })
     .add(
       new go.Shape('RoundedRectangle')
         .bind('fill', 'color')
         .bind('opacity', 'isVisible', v => v ? 1 : 0),
-      new go.TextBlock({ 
-        margin: 8, 
-        font: '13px sans-serif',
+      new go.TextBlock({
+        font: '42px sans-serif',
+        margin: new go.Margin(20, 28, 20, 28),
         textAlign: 'center',
-        wrap: go.TextBlock.WrapDesiredSize,
-        maxSize: new go.Size(100, NaN)
+        stroke: '#000000',
+        wrap: go.TextBlock.WrapDesiredSize
       })
-        .bind('text')
+        .bind('text', '', d => (d && d.emoji ? (d.emoji + ' ' + (d.text || '')) : (d.text || '')))
         .bind('opacity', 'isVisible', v => v ? 1 : 0)
+        .bind('maxSize', 'key', k => k === 1000 ? new go.Size(NaN, NaN) : new go.Size(2000, NaN))
     );
+  // Support manual positioning via data.loc if present
+  template.bind(new go.Binding('location', 'loc', go.Point.parse).makeTwoWay(go.Point.stringify));
 
   // Add click handler to template
   template.click = function(e, node) {
     const data = node.data;
+    console.debug('[solutions] click', data);
     // Only allow clicks on visible nodes
     if (!data.isVisible) return;
     
@@ -83,6 +102,7 @@ function createDiagramNodeTemplate() {
       openDetailPage(document.getElementById('main-content'), data.source);
     } else if (data.type !== 'leaf') {
       // Click on branch or root node - update selected path and show subtree
+      console.debug('[solutions] selectNode', data.key);
       selectNode(data.key);
     }
   };
@@ -108,6 +128,7 @@ function getChildrenOf(nodeKey) {
  * - Only show grandchildren for selected branches (not for non-selected siblings)
  */
 function selectNode(nodeKey) {
+  console.debug('[solutions] selectNode called', nodeKey);
   // Build path from root to selected node
   const newPath = [];
   let current = nodeKey;
@@ -117,7 +138,8 @@ function selectNode(nodeKey) {
   }
 
   window.selectedPath = newPath;
-  updateTreeVisibility();
+  console.debug('[solutions] newPath', newPath);
+  rebuildDiagramForSelection();
 }
 
 function updateTreeVisibility() {
@@ -173,8 +195,100 @@ function updateTreeVisibility() {
     diagram.model.setDataProperty(linkData, 'isVisible', shouldShow);
   });
 
-  // Smooth layout animation
-  diagram.layoutDiagram(true);
+  // Do not trigger a relayout or animation; preserve positions
+  // This avoids confusing movement when toggling visibility
+  // If needed later, a manual zoomToFit without animation can be applied
+  // diagram.layoutDiagram(false);
+}
+
+function computeVisibleSetFromPath(path) {
+  const nodesToShow = new Set();
+  const root = solutionsNodes.find(n => n.type === 'root');
+  nodesToShow.add(root.key);
+
+  for (let i = 0; i < path.length; i++) {
+    const currentKey = path[i];
+    const parentKey = i > 0 ? path[i - 1] : null;
+    nodesToShow.add(currentKey);
+    if (parentKey !== null) {
+      const siblings = getChildrenOf(parentKey);
+      siblings.forEach(k => nodesToShow.add(k));
+    }
+    if (i === path.length - 1) {
+      const children = getChildrenOf(currentKey);
+      children.forEach(childKey => {
+        nodesToShow.add(childKey);
+        if (path.length >= 3) {
+          const gcs = getChildrenOf(childKey);
+          gcs.forEach(gc => nodesToShow.add(gc));
+        }
+      });
+    }
+  }
+  return nodesToShow;
+}
+
+function rebuildDiagramForSelection() {
+  const diagram = window.solutionDiagram;
+  if (!diagram) return;
+  console.debug('[solutions] rebuildDiagramForSelection start');
+
+  const path = window.selectedPath && window.selectedPath.length ? window.selectedPath : [1000];
+  const nodesToShow = computeVisibleSetFromPath(path);
+  console.debug('[solutions] nodesToShow', Array.from(nodesToShow));
+  window.visibleNodes = nodesToShow;
+
+  // Capture previous positions to preserve shared nodes
+  const prevPositions = new Map();
+  solutionsNodes.forEach(n => {
+    const part = diagram.findPartForKey(n.key);
+    if (part && part.location) {
+      prevPositions.set(n.key, part.location.copy());
+    }
+  });
+
+  // Build model arrays containing only visible nodes/links
+  const nodeArray = solutionsNodes
+    .filter(n => nodesToShow.has(n.key))
+    .map(n => ({
+      ...n,
+      color: getNodeColor(n),
+      isVisible: true
+    }));
+
+  const linkArray = solutionsLinks.filter(l => nodesToShow.has(l.from) && nodesToShow.has(l.to));
+
+  // Replace model after the click transaction completes to avoid errors
+  setTimeout(() => {
+    const newModel = new go.GraphLinksModel(nodeArray, linkArray);
+    diagram.model = newModel;
+    console.debug('[solutions] model replaced', nodeArray.length, linkArray.length);
+
+    // Restore positions for nodes present in both versions
+    diagram.nodes.each(node => {
+      const key = node.data.key;
+      const prev = prevPositions.get(key);
+      if (prev) {
+        node.location = prev;
+      } else {
+        // For new nodes, position near parent to keep things sensible
+        const parentKey = getParentOf(key);
+        const parentPart = parentKey != null ? diagram.findPartForKey(parentKey) : null;
+        const base = parentPart && parentPart.location ? parentPart.location.copy() : new go.Point(0, 0);
+        const idx = getChildrenOf(parentKey || key).indexOf(key);
+        node.location = new go.Point(base.x + (idx * 260), base.y + 150);
+      }
+    });
+
+    // Ensure links are visible in the subgraph
+    diagram.links.each(link => {
+      diagram.model.setDataProperty(link.data, 'isVisible', true);
+    });
+
+    // Run a quick non-animated layout and fit once to center content nicely
+    try { diagram.layoutDiagram(false); } catch (e) {}
+    try { diagram.zoomToFit(); } catch (e) {}
+  }, 0);
 }
 
 function initializeSolutionDiagram() {
@@ -189,13 +303,20 @@ function initializeSolutionDiagram() {
     layout: $(go.TreeLayout, { 
       angle: 90, 
       arrangement: go.TreeLayout.ArrangementHorizontal,
-      nodeSpacing: 40,
-      layerSpacing: 80
+      nodeSpacing: 60,
+      layerSpacing: 120
     }),
     'undoManager.isEnabled': true,
+    initialContentAlignment: go.Spot.Center,
     scrollMode: go.Diagram.XYScroll,
     'toolManager.mouseWheelBehavior': go.ToolManager.WheelNone
   });
+
+  // Disable animations to prevent confusing rebuild motion
+  diagram.animationManager.isEnabled = false;
+  if (go.AnimationManager && diagram.animationManager) {
+    diagram.animationManager.initialAnimationStyle = go.AnimationManager.None;
+  }
 
   // Use the template function that includes click handler
   diagram.nodeTemplate = createDiagramNodeTemplate();
@@ -226,8 +347,15 @@ function initializeSolutionDiagram() {
   
   // Auto-scale diagram to fit container
   setTimeout(() => {
-    smoothZoomToFit(diagram, 350);
+    // Fit once on init without animation to get viewport bounds
+    try { diagram.zoomToFit(); } catch (e) {}
+
   }, 100);
+
+  // Immediately apply the same centering behavior as clicking the parent once
+  setTimeout(() => {
+    try { selectNode(1000); } catch (e) {}
+  }, 120);
 }
 
 // Smoothly animate diagram to fit the viewport without a jump

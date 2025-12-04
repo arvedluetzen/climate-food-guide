@@ -45,6 +45,16 @@
 	--accent-yellow: #fde68a;
 }
 
+/* Ensure ordered lists show numbers */
+ol {
+	list-style-type: decimal;
+	padding-left: 1.5rem;
+}
+
+ol li {
+	display: list-item;
+}
+
 /* Center chart and position label/button */
 /* Outer container to center everything */
 .food-chart-outer-container {
@@ -85,10 +95,10 @@
 	margin-left: 1.5rem;
 	background: var(--primary50);
 	color: #fff;
-	padding: 1.5rem 2.5rem;
+	padding: 1.25rem 2rem;
 	border-radius: 0.75rem;
-	font-size: 1.5rem;
-	font-weight: 700;
+	font-size: 1.1rem;
+	font-weight: 600;
 	cursor: pointer;
 	box-shadow: 0 2px 12px rgba(0,0,0,0.10);
 	transition: background 0.2s;
@@ -98,6 +108,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	text-align: center;
+	line-height: 1.4;
 	white-space: nowrap;
 }
 

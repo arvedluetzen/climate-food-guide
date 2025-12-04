@@ -6,16 +6,18 @@
     </svg>
   </button>
   <div class="detail-content">
-    <h1 class="detail-main-title">Plants</h1>
-    <h2>Why Plants Matter</h2>
-<p>Plant-based foods generally have a lower carbon footprint compared to animal-based foods.</p>
-<h3>Key Points</h3>
-<ul>
-<li>Lower land use</li>
-<li>Lower emissions</li>
-<li>Higher efficiency</li>
-</ul>
-<p><a href="https://ourworldindata.org/less-meat-or-sustainable-meat">Read more</a></p>
+    <h1 class="detail-main-title">How different is the climate impact of different foods?</h1>
+    <p>When it comes to GHG emissions not all foods are created equal. Depending on how they are produced their climate impact can vary a lot.</p>
+<a href="https://ourworldindata.org/less-meat-or-sustainable-meat" target="_blank">
+<img src="/assets/img/2-problem/Carbon-footprint-of-protein-foods-2.png" alt="Variation of Emissions within Food Groups">
+</a>
+<p>As a general rule it holds that products that involve animals emit more than those that are made directly from plants. To read more about why, read these two articles</p>
+<p>LINK INEFFICIENCY AND METHANE FROM COWS</p>
+<p>The numbers in the first graph are just estimates and means. Here is an overview of the internal variation within product groups:</p>
+<iframe src="https://ourworldindata.org/explorers/food-footprints?Commodity+or+Specific+Food+Product=Commodity&Environmental+Impact=Carbon+footprint&Kilogram+%2F+Protein+%2F+Calories=Per+kilogram&By+stage+of+supply+chain=true&country=Almonds~Bacon~Bananas~Beans~Beef+%28beef+herd%29~Beef+%28dairy+herd%29~Beefburger~Cheese~Cow%27s+milk~Eggs~Lamb+%26+Mutton~Maize~Milk~Peas~Penne+pasta~Pig+Meat~Pizza~Poultry+Meat~Prawns+%28farmed%29~Rice~Steak+pie~Tofu~Tomatoes~Vegetable+lasagne~Wheat+%26+Rye&tab=chart&hideControls=false" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
+<h1>Further Reading</h1>
+<p>A more detailed explanation of how emissions can vary within a group of products and why meat still has the most impact on the climate:
+<a href="https://ourworldindata.org/less-meat-or-sustainable-meat" target="_blank">Less meat is nearly always better than sustainable meat, to reduce your carbon footprint (Our World in Data)</a></p>
 
   </div>
 </div>
@@ -116,6 +118,14 @@
     text-align: justify;
   }
 
+  /* Ordered/numbered lists */
+  .detail-content ol {
+    list-style: decimal;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: justify;
+  }
+
   .detail-content li {
     margin-bottom: 0.5rem;
     line-height: 1.6;
@@ -169,6 +179,64 @@
     border-bottom-color: var(--secondary67);
   }
 
+  /* Blockquotes - for longer quotes */
+  .detail-content blockquote {
+    background: linear-gradient(135deg, #f9fafb, #f3f4f6);
+    border-left: 4px solid var(--primary50);
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0.5rem;
+    font-style: italic;
+    color: #374151;
+    position: relative;
+  }
+
+  .detail-content blockquote p {
+    margin-bottom: 0.5rem;
+  }
+
+  .detail-content blockquote p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Quote attribution - use a cite or em at the end */
+  .detail-content blockquote cite,
+  .detail-content blockquote .quote-source {
+    display: block;
+    font-style: normal;
+    font-size: 0.95rem;
+    margin-top: 0.75rem;
+    color: var(--primary67);
+    font-weight: 600;
+  }
+
+  .detail-content blockquote cite::before,
+  .detail-content blockquote .quote-source::before {
+    content: "— ";
+  }
+
+  /* Inline quotes with <q> tag or wrapped quotes */
+  .detail-content q {
+    font-style: italic;
+    color: var(--primary67);
+    quotes: """ """ "'" "'";
+  }
+
+  /* Inline quote citations - superscript link after quote */
+  .detail-content sup a {
+    font-size: 0.75em;
+    color: var(--secondary50);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: none;
+    padding: 0 0.15em;
+  }
+
+  .detail-content sup a:hover {
+    color: var(--secondary67);
+    text-decoration: underline;
+  }
+
   /* Responsive adjustments */
   @media (max-width: 768px) {
     .detail-header {
@@ -195,4 +263,22 @@
 </style>
 
 <!-- No scroll-awareness for now to avoid layout issues -->
+
+<script>
+  // Ensure all citation/reference links open in a new tab
+  (function() {
+    const container = document.querySelector('.detail-content');
+    if (!container) return;
+    const links = container.querySelectorAll('a');
+    links.forEach(a => {
+      const href = a.getAttribute('href') || '';
+      // Treat absolute URLs as external references
+      if (href.startsWith('http')) {
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener');
+      }
+    });
+  })();
+  
+</script>
 

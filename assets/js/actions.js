@@ -10,15 +10,15 @@ function tc(name, fallback) {
 // Define actions (left column) and areas (right column)
 const actionsData = {
   actions: [
-    { id: 'work', label: 'Work', source: 'work' },
-    { id: 'volunteer', label: 'Volunteer', source: 'volunteer' },
-    { id: 'buy', label: 'Buy', source: 'buy' },
-    { id: 'enable', label: 'Enable', source: 'enable' }
+    { id: 'work', label: 'Work', emoji: '💼', source: '4-work' },
+    { id: 'volunteer', label: 'Volunteer', emoji: '🤝', source: '4-volunteer' },
+    { id: 'buy', label: 'Buy', emoji: '🛒', source: '4-buy' },
+    { id: 'enable', label: 'Enable', emoji: '🔓', source: '4-enable' }
   ],
   areas: [
-    { id: 'technology', label: 'Technology', source: 'technology' },
-    { id: 'policy', label: 'Policy', source: 'policy' },
-    { id: 'culture', label: 'Culture', source: 'culture' }
+    { id: 'technology', label: 'Technology', emoji: '💡', source: '4-technology' },
+    { id: 'policy', label: 'Policy', emoji: '📜', source: '4-policy' },
+    { id: 'culture', label: 'Culture', emoji: '🎭', source: '4-culture' }
   ],
   // Arrow connections: which actions connect to which areas
   connections: [
@@ -31,10 +31,10 @@ const actionsData = {
 
 function getConnectionColor(actionId) {
   const colors = {
-    work: tc('secondary50', '#60a5fa'),      // blue-ish
-    volunteer: tc('primary33', '#34d399'), // green/teal
-    buy: tc('accent-150', '#fbbf24'),       // amber-ish
-    enable: tc('accent-183', '#f87171')     // red-ish (accent)
+    work: tc('secondary50', '#93c5fd'),      // lighter blue
+    volunteer: tc('primary33', '#86efac'), // lighter green/teal
+    buy: tc('accent-150', '#fef3c7'),       // lighter yellow
+    enable: tc('accent-183', '#fbcfe8')     // lighter pink
   };
   return colors[actionId] || tc('GREY300', '#9ca3af');
 }
@@ -160,30 +160,41 @@ function initializeActionsDiagram() {
     rect.setAttribute('y', boxData.y);
     rect.setAttribute('width', boxData.width);
     rect.setAttribute('height', boxData.height);
-    rect.setAttribute('rx', '8');
-    rect.setAttribute('fill', isAction ? getConnectionColor(boxData.id) : tc('secondary17', '#e0e7ff'));
-    rect.setAttribute('stroke', isAction ? getConnectionColor(boxData.id) : tc('secondary33', '#a5b4fc'));
-    rect.setAttribute('stroke-width', '2');
-    rect.setAttribute('opacity', '0.85');
+    rect.setAttribute('rx', '12');
+    rect.setAttribute('fill', isAction ? getConnectionColor(boxData.id) : tc('secondary17', '#dbeafe'));
+    rect.setAttribute('stroke', 'none');
+    rect.setAttribute('opacity', '1');
     rect.setAttribute('class', 'box-rect');
     
+    // Emoji on the left side
+    const emoji = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    emoji.setAttribute('x', boxData.x + 15);
+    emoji.setAttribute('y', boxData.y + boxData.height / 2);
+    emoji.setAttribute('text-anchor', 'start');
+    emoji.setAttribute('dominant-baseline', 'middle');
+    emoji.setAttribute('font-size', '24');
+    emoji.setAttribute('pointer-events', 'none');
+    emoji.textContent = boxData.emoji || '';
+    
+    // Label text centered in remaining space
     const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    text.setAttribute('x', boxData.x + boxData.width / 2);
+    text.setAttribute('x', boxData.x + boxData.width / 2 + 10);
     text.setAttribute('y', boxData.y + boxData.height / 2);
     text.setAttribute('text-anchor', 'middle');
     text.setAttribute('dominant-baseline', 'middle');
     text.setAttribute('font-size', '14');
     text.setAttribute('font-weight', 'bold');
-    text.setAttribute('fill', isAction ? 'white' : tc('GREY600', '#1f2937'));
+    text.setAttribute('fill', '#000000');
     text.setAttribute('pointer-events', 'none');
     text.textContent = boxData.label;
     
     g.appendChild(rect);
+    g.appendChild(emoji);
     g.appendChild(text);
     
     // Hover effect: show/highlight connections
     g.addEventListener('mouseenter', function() {
-      rect.setAttribute('opacity', '1');
+      rect.setAttribute('opacity', '0.9');
       
       if (isAction && lineMap[boxData.id]) {
         // Show lines from this action
@@ -205,7 +216,7 @@ function initializeActionsDiagram() {
     });
     
     g.addEventListener('mouseleave', function() {
-      rect.setAttribute('opacity', '0.85');
+      rect.setAttribute('opacity', '1');
       
       if (isAction && lineMap[boxData.id]) {
         lineMap[boxData.id].forEach(line => {
