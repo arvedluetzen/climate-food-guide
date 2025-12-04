@@ -1,0 +1,304 @@
+<div class="detail-page">
+  <!-- Fixed close button in top right -->
+  <button id="close-detail" class="close-button">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </button>
+  <div class="detail-content">
+    <h1 class="detail-main-title">What would happen if we reduced meat consumption?</h1>
+    <h2>Key Ideas</h2>
+<ul>
+<li>The EAT-Lancet Diet was developed based on research to optimise for environmental and human health.</li>
+<li>If it were the average diet on earth it would reduce food related greenhous gas emissions by almost 50%</li>
+</ul>
+<p>As we have seen (ARTICLE), animal products generally have a lot higher emissions per calorie or gram of protein than food from plants. A very straightforward to reducing emissions could be to increase the share of plants in diets a lot. Researchers have proposed a diet “to balance the goals of healthy nutrition and environmental sustainability for a global population.” Below you can see how its contents would compare to the average diet of some countries.</p>
+<iframe src="https://ourworldindata.org/grapher/eat-lancet-diet-comparison?country=USA~EAT-Lancet~IND~KEN~CAN~CHE&tab=chart" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
+<p>As you might have noticed: The EAT-Lancet diet contains a lot less animal products. Just how much you can see in the next chart.</p>
+<blockquote>
+<p>For most people in rich and middle-income countries, this would mean a reduction in meat and dairy consumption, but it does not eliminate all animal products completely. For many low-income countries, where meat consumption is low, this would actually mean an increase.
+<cite><a href="https://ourworldindata.org/food-emissions-carbon-budget#:~:text=For%20most%20people%20in%20rich,would%20actually%20mean%20an%20increase.">Hannah Ritchie on Our World in Data</a></cite></p>
+</blockquote>
+<iframe src="https://ourworldindata.org/grapher/eat-lancet-diet-animal-products?country=EAT-Lancet~USA~ETH~IND~CHN~CAN&tab=chart" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
+<p>What would happen to the emissions of the global food system, if this diet would be the average diet on earth? It would half them!</p>
+<p>Considering all emissions from the food sector in a business as usual scenario and comparing it to a scenario where the only change is this shift in dietary pattern we would emit 48% less <sup><a href="https://ourworldindata.org/food-emissions-carbon-budget">[OWID]</a></sup>. This sounds absolutely fantastic and shows just how impactful the choice of food is. The open question here is: Can we get there and if so how?</p>
+<h1>Further Reading</h1>
+<p>All of this has another layer to it: If we ate less animals, we would need less land, which, depending on how it is used, could absorb CO2 and help mitigate climate change:</p>
+<ul>
+<li>First an introduction to landuse changes: <a href="https://ourworldindata.org/land-use-diets" target="_blank">If the world adopted a plant-based diet, we would reduce global agricultural land use from 4 to 1 billion hectares (Our World in Data)</a></li>
+<li>Then a more detailed analysis of how this could help the climate: <a href="https://ourworldindata.org/carbon-opportunity-costs-food" target="_blank">What are the carbon opportunity costs of our food? (Our World in Data)</a></li>
+</ul>
+<p>The 48% reduction number comes from a paper which Hannah Ritchie wrote an article about on Our World in Data:</p>
+<ul>
+<li>The Article: <a href="https://ourworldindata.org/food-emissions-carbon-budget" target="_blank">Emissions from food alone could use up all of our budget for 1.5°C or 2°C – but we have a range of opportunities to avoid this</a></li>
+<li>The Paper: <a href="https://www.science.org/doi/10.1126/science.aba7357" target="_blank">Global food system emissions could preclude achieving the 1.5° and 2°C climate change targets</a></li>
+</ul>
+<p>If you are interested to dive deeper into the EAT-Lancet Diet and what went into creating it:</p>
+<ul>
+<li>Here is a summarizin article: <a href="https://www.stockholmresilience.org/research/research-news/2019-01-17-the-planetary-health-diet.html" target="_blank">The planetary health diet</a></li>
+<li>And here is the full report: <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(18)31788-4/fulltext" target="_blank">Food in the Anthropocene: the EAT–Lancet Commission on healthy diets from sustainable food systems</a></li>
+</ul>
+
+  </div>
+</div>
+
+<style>
+  .detail-page {
+    max-width: 100%;
+    margin: 0 auto;
+    padding-top: 2rem;
+  }
+
+  /* Fixed close button - top right corner */
+  .close-button {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
+    background: white;
+    border: 2px solid var(--primary50);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    color: var(--primary50);
+  }
+
+  .close-button:hover {
+    background: var(--primary50);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Content area with narrow column */
+  .detail-content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Main title - simple, green, within text column */
+  .detail-main-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary67);
+    margin: 0 0 2rem 0;
+    line-height: 1.2;
+  }
+
+  /* Key Ideas box: style the first h2 (regardless of title before it) */
+  .detail-content h2:first-of-type {
+    background: var(--accent-yellow);
+    color: #4b4b4b;
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem 0.75rem 0 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    border-left: 4px solid var(--primary50);
+    border-bottom: none;
+  }
+
+  .detail-content h2:first-of-type + ul {
+    background: var(--accent-yellow);
+    padding: 0 1.5rem 1.25rem 2.5rem;
+    border-radius: 0 0 0.75rem 0.75rem;
+    margin: 0 0 2rem 0;
+    border-left: 4px solid var(--primary50);
+    list-style: disc;
+  }
+
+  .detail-content h2:first-of-type + ul li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: #4b4b4b;
+    text-align: justify;
+  }
+
+  /* Regular paragraphs - justified text */
+  .detail-content p {
+    text-align: justify;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+    color: #374151;
+  }
+
+  /* Regular lists (not in Key Ideas) */
+  .detail-content ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: justify;
+  }
+
+  /* Ordered/numbered lists */
+  .detail-content ol {
+    list-style: decimal;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: justify;
+  }
+
+  .detail-content li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: #374151;
+  }
+
+  /* Images - centered within column */
+  .detail-content img {
+    display: block;
+    margin: 2rem auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 900px) {
+    .detail-content img {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  /* Section headings (Sources, Further Reading) */
+  .detail-content h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--primary50);
+    color: var(--primary67);
+  }
+
+  .detail-content h1:first-child {
+    margin-top: 0;
+    border-bottom: none;
+  }
+
+  /* Links */
+  .detail-content a {
+    color: var(--secondary50);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid var(--secondary33);
+    transition: all 0.2s;
+  }
+
+  .detail-content a:hover {
+    color: var(--secondary67);
+    border-bottom-color: var(--secondary67);
+  }
+
+  /* Blockquotes - for longer quotes */
+  .detail-content blockquote {
+    background: linear-gradient(135deg, #f9fafb, #f3f4f6);
+    border-left: 4px solid var(--primary50);
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0.5rem;
+    font-style: italic;
+    color: #374151;
+    position: relative;
+  }
+
+  .detail-content blockquote p {
+    margin-bottom: 0.5rem;
+  }
+
+  .detail-content blockquote p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Quote attribution - use a cite or em at the end */
+  .detail-content blockquote cite,
+  .detail-content blockquote .quote-source {
+    display: block;
+    font-style: normal;
+    font-size: 0.95rem;
+    margin-top: 0.75rem;
+    color: var(--primary67);
+    font-weight: 600;
+  }
+
+  .detail-content blockquote cite::before,
+  .detail-content blockquote .quote-source::before {
+    content: "— ";
+  }
+
+  /* Inline quotes with <q> tag or wrapped quotes */
+  .detail-content q {
+    font-style: italic;
+    color: var(--primary67);
+    quotes: """ """ "'" "'";
+  }
+
+  /* Inline quote citations - superscript link after quote */
+  .detail-content sup a {
+    font-size: 0.75em;
+    color: var(--secondary50);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: none;
+    padding: 0 0.15em;
+  }
+
+  .detail-content sup a:hover {
+    color: var(--secondary67);
+    text-decoration: underline;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .detail-header {
+      padding: 1.5rem 1rem;
+      margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+    }
+
+    .detail-title {
+      font-size: 1.75rem;
+    }
+
+    .detail-content {
+      padding: 0 1rem;
+    }
+
+    .detail-content h1 {
+      font-size: 1.5rem;
+    }
+
+    .detail-content p {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<!-- No scroll-awareness for now to avoid layout issues -->
+
+<script>
+  // Ensure all citation/reference links open in a new tab
+  (function() {
+    const container = document.querySelector('.detail-content');
+    if (!container) return;
+    const links = container.querySelectorAll('a');
+    links.forEach(a => {
+      const href = a.getAttribute('href') || '';
+      // Treat absolute URLs as external references
+      if (href.startsWith('http')) {
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener');
+      }
+    });
+  })();
+  
+</script>
+

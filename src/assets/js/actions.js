@@ -10,15 +10,15 @@ function tc(name, fallback) {
 // Define actions (left column) and areas (right column)
 const actionsData = {
   actions: [
-    { id: 'work', label: 'Work', emoji: '💼', source: 'work' },
-    { id: 'volunteer', label: 'Volunteer', emoji: '🤝', source: 'volunteer' },
-    { id: 'buy', label: 'Buy', emoji: '🛒', source: 'buy' },
-    { id: 'enable', label: 'Enable', emoji: '🔓', source: 'enable' }
+    { id: 'work', label: 'Work', emoji: '💼', source: '4-work' },
+    { id: 'volunteer', label: 'Volunteer', emoji: '🤝', source: '4-volunteer' },
+    { id: 'buy', label: 'Buy', emoji: '🛒', source: '4-buy' },
+    { id: 'enable', label: 'Enable', emoji: '🔓', source: '4-enable' }
   ],
   areas: [
-    { id: 'technology', label: 'Technology', emoji: '💡', source: 'technology' },
-    { id: 'policy', label: 'Policy', emoji: '📜', source: 'policy' },
-    { id: 'culture', label: 'Culture', emoji: '🎭', source: 'culture' }
+    { id: 'technology', label: 'Technology', emoji: '💡', source: '4-technology' },
+    { id: 'policy', label: 'Policy', emoji: '📜', source: '4-policy' },
+    { id: 'culture', label: 'Culture', emoji: '🎭', source: '4-culture' }
   ],
   // Arrow connections: which actions connect to which areas
   connections: [

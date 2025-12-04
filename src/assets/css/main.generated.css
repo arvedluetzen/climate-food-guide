@@ -234,6 +234,9 @@
   .block {
     display: block;
   }
+  .contents {
+    display: contents;
+  }
   .flex {
     display: flex;
   }
@@ -243,26 +246,14 @@
   .hidden {
     display: none;
   }
-  .table {
-    display: table;
-  }
-  .h-full {
-    height: 100%;
-  }
   .w-full {
     width: 100%;
   }
   .max-w-6xl {
     max-width: var(--container-6xl);
   }
-  .flex-shrink {
-    flex-shrink: 1;
-  }
   .shrink {
     flex-shrink: 1;
-  }
-  .border-collapse {
-    border-collapse: collapse;
   }
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
@@ -344,9 +335,6 @@
   .text-white {
     color: var(--color-white);
   }
-  .underline {
-    text-decoration-line: underline;
-  }
   .outline {
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
@@ -416,6 +404,13 @@
   --accent-1100: #51381c;
   --accent-yellow: #fde68a;
 }
+ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+}
+ol li {
+  display: list-item;
+}
 .food-chart-outer-container {
   display: flex;
   flex-direction: column;
@@ -449,10 +444,10 @@
   margin-left: 1.5rem;
   background: var(--primary50);
   color: #fff;
-  padding: 1.5rem 2.5rem;
+  padding: 1.25rem 2rem;
   border-radius: 0.75rem;
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
   box-shadow: 0 2px 12px rgba(0,0,0,0.10);
   transition: background 0.2s;
@@ -462,6 +457,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  line-height: 1.4;
   white-space: nowrap;
 }
 .chart-label:hover {

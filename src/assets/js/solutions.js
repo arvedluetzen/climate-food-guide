@@ -20,17 +20,17 @@ const solutionsNodes = [
   { key: 1220, text: 'finding DIFFERENT processes', emoji: '🧫', type: 'branch' },
 
   // Sample leaf articles for each branch
-  { key: 2111, text: 'Impact?', emoji: '📄', type: 'leaf', source: '1-emissions-overview' },
-  { key: 2112, text: 'How?', emoji: '📄', type: 'leaf', source: 'plants' },
-  { key: 2121, text: 'Foodwaste', emoji: '📄', type: 'leaf' },
-  { key: 2122, text: 'Demand', emoji: '📄', type: 'leaf' },
-  { key: 2211, text: 'Plants', emoji: '📄', type: 'leaf' },
-  { key: 2212, text: 'Animals', emoji: '📄', type: 'leaf' },
-  { key: 2213, text: 'Electrify', emoji: '📄', type: 'leaf' },
-  { key: 2221, text: 'Idea!', emoji: '📄', type: 'leaf' },
-  { key: 2222, text: 'How?', emoji: '📄', type: 'leaf' },
-  { key: 2223, text: 'Price?', emoji: '📄', type: 'leaf' },
-  { key: 2224, text: 'Demand?', emoji: '📄', type: 'leaf' }
+  { key: 2111, text: 'Impact?', emoji: '📄', type: 'leaf', source: '3-less-meat' },
+  { key: 2112, text: 'How?', emoji: '📄', type: 'leaf', source: '3-convincing' },
+  { key: 2121, text: 'Foodwaste', emoji: '📄', type: 'leaf', source: '3-foodwaste' },
+  { key: 2122, text: 'Demand', emoji: '📄', type: 'leaf', source: '3-food-demand' },
+  { key: 2211, text: 'Plants', emoji: '📄', type: 'leaf', source: '3-better-plants' },
+  { key: 2212, text: 'Animals', emoji: '📄', type: 'leaf', source: '3-better-animal' },
+  { key: 2213, text: 'Electrify', emoji: '📄', type: 'leaf', source: '3-electrify' },
+  { key: 2221, text: 'Idea!', emoji: '📄', type: 'leaf', source: '3-altprotein-why' },
+  { key: 2222, text: 'How?', emoji: '📄', type: 'leaf', source: '3-altprotein-overview' },
+  { key: 2223, text: 'Price?', emoji: '📄', type: 'leaf', source: '3-altprotein-cost' },
+  { key: 2224, text: 'Demand?', emoji: '📄', type: 'leaf', source: '3-altprotein-demand' }
 ];
 
 // Links: connect roots -> branches -> leaves

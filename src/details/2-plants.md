@@ -1,6 +1,6 @@
 ---
 layout: detail.njk
-title: Plants
+title: Can plants emit Greenhouse Gases?
 ---
 
 ## Why Plants Matter

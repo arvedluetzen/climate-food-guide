@@ -3,27 +3,34 @@
     <div class="flex flex-col md:flex-row md:gap-8 items-center">
       <!-- Left: Chart -->
       <div class="md:w-1/2 w-full">
-        <div class="food-chart-outer-container">
-          <div class="food-chart-container">
-            <div class="food-chart-wrapper">
-              <canvas id="foodEmissionsChart" class="w-full h-full"></canvas>
-            </div>
-          </div>
-        </div>
+        <a href="https://ourworldindata.org/environmental-impacts-of-food?insight=food-is-responsible-for-one-quarter-of-the-worlds-emissions#key-insights" target="_blank">
+        <img src="{{ baseUrl }}assets/img/1-intro/How-much-of-GHGs-come-from-food.png" alt="Breakdown of greenhouse gas emissions from food systems">
+        </a>
       </div>
-
       <!-- Right: Title + Intro + Button -->
       <div class="flex flex-col md:w-1/2 w-full justify-center">
-        <h2 class="text-3xl font-bold mb-4">Making our Food Climate Neutral</h2>
+        <h2 class="text-3xl font-bold mb-4">How can Food become Climate Neutral?</h2>
         <div class="prose prose-sm md:prose-base mb-6 text-justify">
           <p>
             Our food system contributes roughly 30% of global greenhouse gas emissions.
-            This guide explores where those emissions come from and the most effective
-            ways we can reduce them — from production changes to smarter consumption.
+            This guide tries to answer the following questions:
+          </p>
+          <br>
+          <ol>
+            <li>Where do these emissions come from?</li>
+            <li>What approaches could be taken to reduce them?</li>
+            <li>How can I get involved in this transition?</li>
+          </ol>
+          <br>
+          <p>
+            Start by understanding why the emissions of the global food system
+            are so important to reaching our climate targets:
           </p>
         </div>
         <div class="flex justify-center">
-          <button id="chartLabel" class="chart-label">🥖🥩🥦 Food 30%</button>
+          <button id="chartLabel" class="chart-label" data-detail="1-emissions-overview">
+            Why Reducing Food Emissions is Crucial
+          </button>
         </div>
       </div>
     </div>

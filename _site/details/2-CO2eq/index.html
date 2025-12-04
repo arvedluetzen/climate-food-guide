@@ -1,0 +1,305 @@
+<div class="detail-page">
+  <!-- Fixed close button in top right -->
+  <button id="close-detail" class="close-button">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </button>
+  <div class="detail-content">
+    <h1 class="detail-main-title">What is CO2-eq and why is it important in food systems?</h1>
+    <h2>Key Ideas:</h2>
+<ul>
+<li>Methane (CH4) is a greenhouse gas like CO2 which is especially present in agriculture.</li>
+<li>Different molecules have different effects on short term and long term warming of the climate.</li>
+<li>CO2-eq tries to standardize other gases into the equivalent amount of CO2.</li>
+</ul>
+<p>When talking about GHG emissions it is important to consider that there is not only CO2 but also methane, nitrous oxide, and others. This is where the term “CO2-eq” comes from. It is the attempt to express the different ways these gases affect the climate in terms of CO2 so we can have one number to express total emissions. This has led to the following standard conversions:</p>
+<ul>
+<li>1 kg of Methane (CH4) = 28 kg of CO2 (100 year global warming potential)</li>
+<li>1 kg nitrous oxide (N2O) = 298 kg of CO2 (100 year global warming potential)</li>
+</ul>
+<p>There is a very important nuance to consider here that is especially relevant in regards to methane (and thus the food sector): On what time horizon do we make the comparison?</p>
+<p>This is important because while CO2 stays in the atmosphere for 300 to 1000 years, methane only persists for about a decade. The numbers I listed above is looking at how much warming is created over 100 years. All of the methane’s warming effect happened in the first decade of this. Using the factor of 28 thus greatly underestimates its effects in the short term future. We have set climate targets until the year 2050, so how potent is methane in that time horizon?</p>
+<ul>
+<li>1 kg of Methane (CH4) = 84 kg of CO2 (20 year global warming potential)</li>
+</ul>
+<p>These considerations lead to the following effects:</p>
+<ul>
+<li>Rising Emissions: More CO2 compounds and thus the warming rises exponentially.</li>
+<li>Constant Emissions: Adding a constant amount of new CO2 leads to a constant increase in warming while CH4 settles at some level where new emissions are equal to the degrading.</li>
+<li>Falling Emissions: No more CO2 emissions mean CO2 levels stay constant and warming stays constant. Methane however will be out of the atmosphere quite quickly and no longer contribute to warming.</li>
+</ul>
+<a href="https://oms-www.files.svdcdn.com/production/downloads/academic/Climate_Metrics_%20Under_%20Ambitious%20_Mitigation.pdf" target="_blank">
+<img src="/climate-food-guide/assets/img/2-problem/ch4-vs-co2.png" alt="illustrations of the differences of CH4 vs CO2's effects on the cliamte.">
+</a>
+<h1>Further Reading</h1>
+<p>An overview of other greenhouse gases and their relative warming effect in comparison to CO2:
+<a href="https://climatechangeconnection.org/emissions/co2-equivalents/#:~:text=CO2%20equivalents%20%C2%B7%201%20x%20%E2%80%93%20carbon,%C2%B7%20298%20x%20%E2%80%93%20nitrous%20oxide%20(N2O)" target="_blank">CO2 equivalents (Climate Change Connection)</a></p>
+<p>If you are interested in a deeper explanation of the different warming effects of methane in comparison to carbon dioxide:
+<a href="https://oms-www.files.svdcdn.com/production/downloads/academic/Climate_Metrics_%20Under_%20Ambitious%20_Mitigation.pdf" target="_blank">Climate metrics under ambitious mitigation (Oxford Martin School)</a></p>
+<p>A deep dive into how the carbon footprints of foods is influenced by methane emissions:
+<a href="https://ourworldindata.org/carbon-footprint-food-methane" target="_blank">The carbon footprint of foods: are differences explained by the impacts of methane? (Our World in Data)</a></p>
+
+  </div>
+</div>
+
+<style>
+  .detail-page {
+    max-width: 100%;
+    margin: 0 auto;
+    padding-top: 2rem;
+  }
+
+  /* Fixed close button - top right corner */
+  .close-button {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
+    background: white;
+    border: 2px solid var(--primary50);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    color: var(--primary50);
+  }
+
+  .close-button:hover {
+    background: var(--primary50);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Content area with narrow column */
+  .detail-content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Main title - simple, green, within text column */
+  .detail-main-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary67);
+    margin: 0 0 2rem 0;
+    line-height: 1.2;
+  }
+
+  /* Key Ideas box: style the first h2 (regardless of title before it) */
+  .detail-content h2:first-of-type {
+    background: var(--accent-yellow);
+    color: #4b4b4b;
+    padding: 1rem 1.5rem;
+    border-radius: 0.75rem 0.75rem 0 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    border-left: 4px solid var(--primary50);
+    border-bottom: none;
+  }
+
+  .detail-content h2:first-of-type + ul {
+    background: var(--accent-yellow);
+    padding: 0 1.5rem 1.25rem 2.5rem;
+    border-radius: 0 0 0.75rem 0.75rem;
+    margin: 0 0 2rem 0;
+    border-left: 4px solid var(--primary50);
+    list-style: disc;
+  }
+
+  .detail-content h2:first-of-type + ul li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: #4b4b4b;
+    text-align: justify;
+  }
+
+  /* Regular paragraphs - justified text */
+  .detail-content p {
+    text-align: justify;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+    color: #374151;
+  }
+
+  /* Regular lists (not in Key Ideas) */
+  .detail-content ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: justify;
+  }
+
+  /* Ordered/numbered lists */
+  .detail-content ol {
+    list-style: decimal;
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: justify;
+  }
+
+  .detail-content li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    color: #374151;
+  }
+
+  /* Images - centered within column */
+  .detail-content img {
+    display: block;
+    margin: 2rem auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 900px) {
+    .detail-content img {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  /* Section headings (Sources, Further Reading) */
+  .detail-content h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--primary50);
+    color: var(--primary67);
+  }
+
+  .detail-content h1:first-child {
+    margin-top: 0;
+    border-bottom: none;
+  }
+
+  /* Links */
+  .detail-content a {
+    color: var(--secondary50);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid var(--secondary33);
+    transition: all 0.2s;
+  }
+
+  .detail-content a:hover {
+    color: var(--secondary67);
+    border-bottom-color: var(--secondary67);
+  }
+
+  /* Blockquotes - for longer quotes */
+  .detail-content blockquote {
+    background: linear-gradient(135deg, #f9fafb, #f3f4f6);
+    border-left: 4px solid var(--primary50);
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    border-radius: 0.5rem;
+    font-style: italic;
+    color: #374151;
+    position: relative;
+  }
+
+  .detail-content blockquote p {
+    margin-bottom: 0.5rem;
+  }
+
+  .detail-content blockquote p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Quote attribution - use a cite or em at the end */
+  .detail-content blockquote cite,
+  .detail-content blockquote .quote-source {
+    display: block;
+    font-style: normal;
+    font-size: 0.95rem;
+    margin-top: 0.75rem;
+    color: var(--primary67);
+    font-weight: 600;
+  }
+
+  .detail-content blockquote cite::before,
+  .detail-content blockquote .quote-source::before {
+    content: "— ";
+  }
+
+  /* Inline quotes with <q> tag or wrapped quotes */
+  .detail-content q {
+    font-style: italic;
+    color: var(--primary67);
+    quotes: """ """ "'" "'";
+  }
+
+  /* Inline quote citations - superscript link after quote */
+  .detail-content sup a {
+    font-size: 0.75em;
+    color: var(--secondary50);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: none;
+    padding: 0 0.15em;
+  }
+
+  .detail-content sup a:hover {
+    color: var(--secondary67);
+    text-decoration: underline;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .detail-header {
+      padding: 1.5rem 1rem;
+      margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+    }
+
+    .detail-title {
+      font-size: 1.75rem;
+    }
+
+    .detail-content {
+      padding: 0 1rem;
+    }
+
+    .detail-content h1 {
+      font-size: 1.5rem;
+    }
+
+    .detail-content p {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<!-- No scroll-awareness for now to avoid layout issues -->
+
+<script>
+  // Ensure all citation/reference links open in a new tab
+  (function() {
+    const container = document.querySelector('.detail-content');
+    if (!container) return;
+    const links = container.querySelectorAll('a');
+    links.forEach(a => {
+      const href = a.getAttribute('href') || '';
+      // Treat absolute URLs as external references
+      if (href.startsWith('http')) {
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener');
+      }
+    });
+  })();
+  
+</script>
+

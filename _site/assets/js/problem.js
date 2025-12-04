@@ -11,10 +11,10 @@ function tc(name, fallback) {
 
 // Base nodes (always present)
 const baseNodes = [
-    { key: 1, text: "Plants", emoji: "🌱", baseColor: tc('primary17', '#bbf7d0'), source: "plants" },
-    { key: 2, text: "Animals", emoji: "🐄", baseColor: tc('primary17', '#bbf7d0'), source: null },
-    { key: 3, text: "Processing", emoji: "⚙️", baseColor: tc('primary17', '#bbf7d0'), source: null },
-    { key: 4, text: "Food", emoji: "🍽️", baseColor: tc('primary17', '#bbf7d0'), source: null }
+    { key: 1, text: "Plants", emoji: "🌱", baseColor: tc('primary17', '#bbf7d0'), source: "2-plants" },
+    { key: 2, text: "Animals", emoji: "🐄", baseColor: tc('primary17', '#bbf7d0'), source: "2-animals" },
+    { key: 3, text: "Processing", emoji: "⚙️", baseColor: tc('primary17', '#bbf7d0'), source: "2-processing" },
+    { key: 4, text: "Food", emoji: "🍽️", baseColor: tc('primary17', '#bbf7d0'), source: "2-food-comp" }
 ];
 
 // Base links
@@ -28,11 +28,10 @@ const baseLinks = [
 
 // Emissions view overlay nodes
 const emissionsOverlayNodes = [
-    { key: 101, text: "Land Use", emoji: "🌍", color: tc('accent-250', '#fbcfe8'), type: "overlay" },
-    { key: 102, text: "Fertilizer", emoji: "🧪", color: tc('accent-250', '#fbcfe8'), type: "overlay" },
-    { key: 103, text: "CO2eq", emoji: "💨", color: tc('accent-250', '#fbcfe8'), type: "overlay" },
-    { key: 104, text: "Transport", emoji: "🚚", color: tc('accent-250', '#fbcfe8'), type: "overlay" },
-    { key: 105, text: "Comparison", emoji: "🥩🆚🥦", color: tc('accent-250', '#fbcfe8'), type: "overlay" }
+    { key: 101, text: "Land Use", emoji: "🌍", color: tc('accent-217', '#fbcfe8'), type: "overlay", source: "2-landuse" },
+    { key: 102, text: "Fertilizer", emoji: "🧪", color: tc('accent-217', '#fbcfe8'), type: "overlay", source: "2-fertilizer" },
+    { key: 103, text: "CO2eq", emoji: "💨", color: tc('accent-217', '#fbcfe8'), type: "overlay", source: "2-CO2eq" },
+    { key: 104, text: "Transport", emoji: "🚚", color: tc('accent-217', '#fbcfe8'), type: "overlay", source: "2-transport" },
 ];
 
 // Emissions view overlay links
@@ -42,19 +41,16 @@ const emissionsOverlayLinks = [
     { from: 1, to: 104 },
     { from: 104, to: 2 },
     { from: 104, to: 3 },
-    { from: 104, to: 105 },
-    { from: 2, to: 105},
-    {from: 3, to: 105},
-    { from: 105, to: 4 },
+    { from: 104, to: 4 },
     { from: 2, to: 103 }
 ];
 
 // System view overlay nodes
 const systemOverlayNodes = [
-    { key: 201, text: "Land", emoji: "🌍", color: tc('secondary33', '#dbeafe'), type: "overlay" },
-    { key: 202, text: "Efficiency", emoji: "⚡", color: tc('secondary33', '#dbeafe'), type: "overlay" },
-    { key: 203, text: "Choice", emoji: "🤔", color: tc('secondary33', '#dbeafe'), type: "overlay" },
-    { key: 204, text: "Waste", emoji: "🗑️", color: tc('secondary33', '#dbeafe'), type: "overlay" }
+    { key: 201, text: "Land", emoji: "🌍", color: tc('secondary17', '#dbeafe'), type: "overlay", source: "2-land-requirement" },
+    { key: 202, text: "Efficiency", emoji: "⚡", color: tc('secondary17', '#dbeafe'), type: "overlay", source: "2-production-efficiency" },
+    { key: 203, text: "Choice", emoji: "🤔", color: tc('secondary17', '#dbeafe'), type: "overlay", source: "2-choice" },
+    { key: 204, text: "Waste", emoji: "🗑️", color: tc('secondary17', '#dbeafe'), type: "overlay", source: "2-foodwaste" }
 ];
 
 // System view overlay links
@@ -74,8 +70,6 @@ const systemOverlayLinks = [
 const baseLinksToRemove = {
     emissions: [
         { from: 1, to: 4 },
-        { from: 2, to: 4 },
-        { from: 3, to: 4 },
         { from: 1, to: 2 },
         { from: 1, to: 3 }
     ],
@@ -98,10 +92,10 @@ function getViewThemes() {
             4: tc('primary17', '#bbf7d0')
         },
         emissions: {
-            1: tc('accent-250', '#fbcfe8'),
-            2: tc('accent-250', '#fbcfe8'),
-            3: tc('accent-250', '#fbcfe8'),
-            4: tc('primary17', '#bbf7d0')
+            1: tc('accent-217', '#fbcfe8'),
+            2: tc('accent-217', '#fbcfe8'),
+            3: tc('accent-217', '#fbcfe8'),
+            4: tc('accent-217', '#fbcfe8')
         },
         system: {
             1: tc('primary17', '#bbf7d0'),
