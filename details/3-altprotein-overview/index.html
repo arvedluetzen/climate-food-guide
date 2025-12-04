@@ -6,8 +6,69 @@
     </svg>
   </button>
   <div class="detail-content">
-    <h1 class="detail-main-title"></h1>
-    
+    <h1 class="detail-main-title">How Could We Make Meat Without Animals?</h1>
+    <h2>Key Ideas:</h2>
+<ul>
+<li>There are three main approaches to making meat without animals: Plant-Based, Cultivated Meat, and Fermentation</li>
+<li>&quot;Increasingly, we may start to think of plant-based, fermentation-derived, and cultivated products as an intersecting venn diagram rather than as three distinct categories.&quot; <sup><a href="https://gfi.org/fermentation/">[GFI]</a></sup></li>
+</ul>
+<p>I will give a quick overview of each of the three approaches:</p>
+<h2>Plant Based <sup><a href="https://gfi.org/science/the-science-of-plant-based-meat/">[GFI]</a></sup></h2>
+<p>The idea here is to take elements from plants and combine them in the same way that they are combined in meat.</p>
+<blockquote>
+<p>At its simplest level, animal meat is made up of protein, fat, vitamins, minerals, and water. Though plants don’t have muscles, they do contain protein, fat, vitamins, minerals, and water. Plant-based meat takes advantage of this biochemical similarity between plants and animals. - GFI
+<cite><a href="https://gfi.org/science/the-science-of-plant-based-meat/">Good Food Institute: The science of plant-based meat</a></cite></p>
+</blockquote>
+<p>Actually accomplishing this is obviously not easy. Especially when trying to create larger pieces of meat, the spacial arrangement plays a big role in the texture of the meat. In a nutshell the production process looks like this:</p>
+<ol>
+<li>Grow crops as raw materials</li>
+<li>Process crops to get the elements needed</li>
+<li>Combine ingredients and create muscle texture.</li>
+</ol>
+<p>Plant based meat has a 1% market share in the US.</p>
+<blockquote>
+<p>For plant-based meat to become a significant part of the global meat market in the coming decades, there remains tremendous need for additional R&amp;D. This innovation and subsequent growth of the plant-based meat industry will only be realized through a concerted and collaborative effort to direct resources (financial, human, and technological) to this area.
+<cite><a href="https://gfi.org/science/the-science-of-plant-based-meat/">Good Food Institute: The science of plant-based meat</a></cite></p>
+</blockquote>
+<h2>Cultivated Meat <sup><a href="https://gfi.org/science/the-science-of-cultivated-meat/">[GFI]</a></sup></h2>
+<p>Analogous to how plants grow from seeds, the concept of cultivated meat is take a few cells from animal tissue and grow them in a cultivator. Instead of growing crops to feed them to animals, then eventually kill them and eat the cells, we directly feed the cells. This makes the process more efficient as we are only producing what we need and not having to keep an animal alive at the same time (article Efficiencies).</p>
+<p>One study showed that if produced using renewable energy, cultivated meat could reduce greenhouse gas emissions by up to 92 percent and land use by up to 90 percent compared to conventional beef.<sup><a href="https://gfi.org/blog/cultivated-meat-lca-tea/">[GFI]</a></sup></p>
+<p>Cultivated meat is a technology that is at the moment getting it’s first clearances to be sold. “As of November 2025, cultivated meat can be sold in Singapore, the United States, and Australia.” This means we are still at the beginning of the development. To arrive at a place where this can replace existing meat production processes, many challenges have to be solved and production has to scale to drive down prices.</p>
+<h2>Fermentation <sup><a href="https://gfi.org/science/the-science-of-fermentation/">[GFI]</a></sup></h2>
+<p>There are several processes that are considered “Fermentation” in the context of alternative proteins and food production in general. All of them rely on microbes to produce or transform some substance:</p>
+<table>
+<thead>
+<tr>
+<th>Application</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Using microbes to “modulate and process plant-derived ingredients” <sup><a href="https://gfi.org/fermentation/">[GFI]</a></sup></td>
+<td>Beer, Yoghurt, Tempeh</td>
+</tr>
+<tr>
+<td>Using the biomass of microbes themselves as an ingredient because of their “fast growth and high protein content” <sup><a href="https://gfi.org/fermentation/">[GFI]</a></sup></td>
+<td>Quorn</td>
+</tr>
+<tr>
+<td>Using “microbial hosts as “cell factories” for producing specific functional ingredients” <sup><a href="https://gfi.org/fermentation/">[GFI]</a></sup></td>
+<td>Vitamin Synthesis (f. ex. B12), insulin for diabetic patients</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see fermentation is already a widely used process in food production. For alternative proteins the idea is that “in addition to being products themselves, ingredients made with fermentation can be used for plant-based or cultivated products.”</p>
+<h1>Sources and Further Reading</h1>
+<p>To dive in head first into alternative proteins, I can recommend the website of the Good Food Institute. I will link their sites on the three topics. From there you can learn more about the science of these technologies but also the business side. They publish comprehensive &quot;State of the Industry Reports&quot; on all approaches:</p>
+<ul>
+<li><a href="https://gfi.org/plant-based/" target="_blank">Plant Based</a></li>
+<li><a href="https://gfi.org/cultivated/" target="_blank">Cultivated Meat</a></li>
+<li><a href="https://gfi.org/fermentation/" target="_blank">Fermentation</a></li>
+</ul>
+<p>If you are interested in a broader overview of new technologies in food systems and their readiness read this paper:
+<a href="https://www.nature.com/articles/s43016-020-0074-1" target="_blank">Innovation can accelerate the transition towards a sustainable food system</a></p>
+
   </div>
 </div>
 
@@ -136,6 +197,56 @@
       margin-left: auto;
       margin-right: auto;
     }
+  }
+
+  /* Subtitle headings - h2 elements (not the first "Key Ideas" one) */
+  .detail-content h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary67);
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary33);
+  }
+
+  /* Tables */
+  .detail-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  .detail-content table thead {
+    background: var(--primary50);
+    color: white;
+  }
+
+  .detail-content table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1rem;
+    border-bottom: 2px solid var(--primary67);
+  }
+
+  .detail-content table td {
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    color: #374151;
+    line-height: 1.6;
+  }
+
+  .detail-content table tbody tr:hover {
+    background: #f9fafb;
+  }
+
+  .detail-content table tbody tr:last-child td {
+    border-bottom: none;
   }
 
   /* Section headings (Sources, Further Reading) */
