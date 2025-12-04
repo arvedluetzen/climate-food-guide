@@ -1,6 +1,7 @@
-<section class="py-12 text-center">
-    <h2 class="text-2xl font-bold mb-6">What Actions Can We Take?</h2>
-    <p class="mb-4">Explore how different actions can influence positive change across different areas.</p>
+<section class="pb-12 text-center">
+    <h2 class="text-2xl font-bold mb-2">What Actions Can We Take?</h2>
+    <p class="mb-6 text-sm text-gray-600">Now it is time to transform these systemic ideas into concrete actions<br>
+    Explore both areas that need change as well as possible actions you could take to help accelerate this transition.</p>
     <div id="actionsDiagram" class="my-8"></div>
 </section>
 

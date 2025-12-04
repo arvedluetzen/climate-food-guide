@@ -4,6 +4,20 @@
 window.problemDiagram = null;
 window.currentDiagramView = "plain";
 
+// View descriptions
+const viewDescriptions = {
+    plain: "This is the most basic representation of how human food is made.",
+    emissions: "Find out where greenhouse gases are emitted in the food production process.",
+    system: "Learn some additional important dynamics that shape how food is produced."
+};
+
+// View colors for description background
+const viewColors = {
+    plain: "var(--primary17)",
+    emissions: "var(--accent-217)",
+    system: "var(--secondary17)"
+};
+
 // Helper to read theme colors with a fallback
 function tc(name, fallback) {
     return (window.themeColors && window.themeColors[name]) || fallback;
@@ -50,7 +64,7 @@ const systemOverlayNodes = [
     { key: 201, text: "Land", emoji: "🌍", color: tc('secondary17', '#dbeafe'), type: "overlay", source: "2-land-requirement" },
     { key: 202, text: "Efficiency", emoji: "⚡", color: tc('secondary17', '#dbeafe'), type: "overlay", source: "2-production-efficiency" },
     { key: 203, text: "Choice", emoji: "🤔", color: tc('secondary17', '#dbeafe'), type: "overlay", source: "2-choice" },
-    { key: 204, text: "Waste", emoji: "🗑️", color: tc('secondary17', '#dbeafe'), type: "overlay", source: "2-foodwaste" }
+    { key: 204, text: "Waste", emoji: "🗑️", color: tc('secondary17', '#dbeafe'), type: "overlay", source: "3-foodwaste" }
 ];
 
 // System view overlay links
@@ -303,6 +317,27 @@ function switchDiagramView(view) {
 
     // Update button styles to show active view
     updateViewButtonStyles(view);
+    
+    // Update description
+    updateViewDescription(view);
+}
+
+/**
+ * Update the description text based on the current view
+ * @param {string} view - The current view: "plain", "emissions", or "system"
+ */
+function updateViewDescription(view) {
+    const descriptionElement = document.getElementById('viewDescription');
+    if (descriptionElement && viewDescriptions[view]) {
+        const paragraph = descriptionElement.querySelector('p');
+        if (paragraph) {
+            paragraph.textContent = viewDescriptions[view];
+        }
+        // Update background color to match the view
+        if (viewColors[view]) {
+            descriptionElement.style.backgroundColor = viewColors[view];
+        }
+    }
 }
 
 /**
@@ -344,6 +379,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initializeProblemDiagram();
     attachButtonEventListeners();
     updateViewButtonStyles("plain");
+    updateViewDescription("plain");
 });
 
 // Make diagram reloadable when returning from detail pages
@@ -356,6 +392,7 @@ window.reloadDiagrams = function() {
         switchDiagramView(savedView);
     } else {
         updateViewButtonStyles("plain");
+        updateViewDescription("plain");
     }
     
     // Re-attach event listeners to buttons

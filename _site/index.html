@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Climate Food Guide</title>
-  <link rel="stylesheet" href="/climate-food-guide/assets/css/main.generated.css">
-  <script>window.BASE_URL = "/climate-food-guide/";</script>
+  <link rel="stylesheet" href="/assets/css/main.generated.css">
+  <script>window.BASE_URL = "/";</script>
 </head>
 
 <body class="bg-gray-50 text-gray-800 font-sans">
@@ -53,12 +53,17 @@
   </div>
 </section>
 <section class="py-12 text-center">
-  <h2 class="text-2xl font-bold mb-6">Food System Framework</h2>
-    <div class="flex justify-center gap-3 mb-6">
+  <h2 class="text-2xl font-bold mb-2">Where Are We Now?</h2>
+  <p class="mb-6 text-sm text-gray-600">Before thinking about solutions, we have to understand how the current system works and where emissions come from.<br>
+    Switch views and then learn more about each element, by clicking on it and reading a short explanation.</p>
+    <div class="flex justify-center gap-3 mb-4">
         <button class="diagram-view-btn active px-4 py-2 rounded font-semibold transition" data-view="plain" style="background-color: var(--primary17); color: var(--GREY600);">Plain View</button>
-        <button class="diagram-view-btn inactive px-4 py-2 rounded font-semibold transition" data-view="emissions" style="background-color: var(--accent-250); color: var(--GREY600);">Emissions</button>
+        <button class="diagram-view-btn inactive px-4 py-2 rounded font-semibold transition" data-view="emissions" style="background-color: var(--accent-217); color: var(--GREY600);">Emissions</button>
         <button class="diagram-view-btn inactive px-4 py-2 rounded font-semibold transition" data-view="system" style="background-color: var(--secondary17); color: var(--GREY600);">System</button>
     </div>
+<p><div id="viewDescription" class="mb-6 px-4 py-3 rounded transition" style="background-color: var(--primary17); color: var(--GREY600); max-width: 600px; margin-left: auto; margin-right: auto;">
+<p class="text-sm">The basic flow of food production from plants and animals to your plate.</p>
+</div></p>
 <p><style>
 .diagram-view-btn {
 cursor: pointer;
@@ -75,16 +80,36 @@ opacity: 0.7;
 opacity: 1;
 }
 </style></p>
-<p><div id="problemDiagram" style="width:100%; height:600px; border:0px solid var(--GREY300);"></div></p>
+<p><div id="problemDiagram" style="width:100%; height:350px; border:0px solid var(--GREY300);"></div></p>
 </section>
-<section class="py-12 text-center">
-    <h2 class="text-2xl font-bold mb-6">Solutions Decision Tree</h2>
-    <p class="mb-4">Choose a branch to explore solutions. Click leaf nodes to open detail pages.</p>
-    <div id="solutionDiagram" style="width:100%; height:480px; margin:0 auto;"></div>
+<div class="section-flow-arrow">
+  <svg class="section-flow-bracket" viewBox="0 0 1000 60" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 20 10 L 20 50 L 980 50 L 980 10"></path>
+  </svg>
+  <svg class="section-flow-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="5" x2="12" y2="19"></line>
+    <polyline points="19 12 12 19 5 12"></polyline>
+  </svg>
+</div>
+<section class="pb-12 text-center">
+    <h2 class="text-2xl font-bold mb-2">Solutions Decision Tree</h2>
+    <p class="mb-6 text-sm text-gray-600">Explore ideas of what we could change to reduce emissions.<br>
+    Choose between different options by clicking on the nodes. In the end you will find more information on how this solution could work.</p>
+    <div id="solutionDiagram" style="width:100%; height:400px; margin:0 auto;"></div>
 </section>
-<section class="py-12 text-center">
-    <h2 class="text-2xl font-bold mb-6">What Actions Can We Take?</h2>
-    <p class="mb-4">Explore how different actions can influence positive change across different areas.</p>
+<div class="section-flow-arrow">
+  <svg class="section-flow-bracket" viewBox="0 0 1000 60" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M 20 10 L 20 50 L 980 50 L 980 10"></path>
+  </svg>
+  <svg class="section-flow-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="5" x2="12" y2="19"></line>
+    <polyline points="19 12 12 19 5 12"></polyline>
+  </svg>
+</div>
+<section class="pb-12 text-center">
+    <h2 class="text-2xl font-bold mb-2">What Actions Can We Take?</h2>
+    <p class="mb-6 text-sm text-gray-600">Now it is time to transform these systemic ideas into concrete actions<br>
+    Explore both areas that need change as well as possible actions you could take to help accelerate this transition.</p>
     <div id="actionsDiagram" class="my-8"></div>
 </section>
 
@@ -94,13 +119,13 @@ opacity: 1;
     © Climate Food Guide
   </footer>
 
-  <script src="/climate-food-guide/assets/js/go.js"></script>
-  <script src="/climate-food-guide/assets/js/colors.js"></script>
-  <script src="/climate-food-guide/assets/js/main.js"></script>
-  <script src="/climate-food-guide/assets/js/intro.js"></script>
-  <script src="/climate-food-guide/assets/js/problem.js"></script>
-  <script src="/climate-food-guide/assets/js/solutions.js"></script>
-  <script src="/climate-food-guide/assets/js/actions.js"></script>
+  <script src="/assets/js/go.js"></script>
+  <script src="/assets/js/colors.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/intro.js"></script>
+  <script src="/assets/js/problem.js"></script>
+  <script src="/assets/js/solutions.js"></script>
+  <script src="/assets/js/actions.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2" defer></script>
 </body>

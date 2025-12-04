@@ -20,17 +20,17 @@ const solutionsNodes = [
   { key: 1220, text: 'finding DIFFERENT processes', emoji: '🧫', type: 'branch' },
 
   // Sample leaf articles for each branch
-  { key: 2111, text: 'Impact?', emoji: '📄', type: 'leaf', source: '3-less-meat' },
-  { key: 2112, text: 'How?', emoji: '📄', type: 'leaf', source: '3-convincing' },
-  { key: 2121, text: 'Foodwaste', emoji: '📄', type: 'leaf', source: '3-foodwaste' },
-  { key: 2122, text: 'Demand', emoji: '📄', type: 'leaf', source: '3-food-demand' },
-  { key: 2211, text: 'Plants', emoji: '📄', type: 'leaf', source: '3-better-plants' },
-  { key: 2212, text: 'Animals', emoji: '📄', type: 'leaf', source: '3-better-animal' },
-  { key: 2213, text: 'Electrify', emoji: '📄', type: 'leaf', source: '3-electrify' },
-  { key: 2221, text: 'Idea!', emoji: '📄', type: 'leaf', source: '3-altprotein-why' },
-  { key: 2222, text: 'How?', emoji: '📄', type: 'leaf', source: '3-altprotein-overview' },
-  { key: 2223, text: 'Price?', emoji: '📄', type: 'leaf', source: '3-altprotein-cost' },
-  { key: 2224, text: 'Demand?', emoji: '📄', type: 'leaf', source: '3-altprotein-demand' }
+  { key: 2111, text: 'What would be the impact of eating less meat?', emoji: '❌🥩', type: 'leaf', source: '3-less-meat' },
+  { key: 2112, text: 'Can we convince people to eat less meat?', emoji: '📣', type: 'leaf', source: '3-convincing' },
+  { key: 2121, text: 'How much food are we wasting?', emoji: '🗑️', type: 'leaf', source: '3-foodwaste' },
+  { key: 2122, text: 'How much food will we need in the future?', emoji: '↗️', type: 'leaf', source: '3-food-demand' },
+  { key: 2211, text: 'How to grow plants with fewer emissions?', emoji: '🍎', type: 'leaf', source: '3-better-plants' },
+  { key: 2212, text: 'Can we reduce emissions from animal agriculture?', emoji: '🐮', type: 'leaf', source: '3-better-animal' },
+  { key: 2213, text: 'What parts of the production process can be electrified?', emoji: '⚡️', type: 'leaf', source: '3-electrify' },
+  { key: 2221, text: 'What are Alternative Proteins?', emoji: '🥩', type: 'leaf', source: '3-altprotein-why' },
+  { key: 2222, text: 'How could we make Meat without Animals?', emoji: '🧫', type: 'leaf', source: '3-altprotein-overview' },
+  { key: 2223, text: 'How much does it cost?', emoji: '💰', type: 'leaf', source: '3-altprotein-cost' },
+  { key: 2224, text: 'Who would buy them?', emoji: '🤷🏻‍♀️', type: 'leaf', source: '3-altprotein-people' }
 ];
 
 // Links: connect roots -> branches -> leaves
@@ -61,7 +61,7 @@ function getNodeColor(node) {
   const tc = (name, fallback) => (window.themeColors && window.themeColors[name]) || fallback;
   if (node.type === 'root') return tc('primary17', '#bbf7d0');
   if (node.type === 'branch') return tc('accent-yellow', '#fef3c7');
-  if (node.type === 'leaf') return tc('secondary33', '#dbeafe');
+  if (node.type === 'leaf') return tc('secondary17', '#dbeafe');
   return tc('GREY100', '#e5e7eb');
 }
 

@@ -98,6 +98,38 @@ ol li {
 	padding: 1.25rem 2rem;
 	border-radius: 0.75rem;
 	font-size: 1.1rem;
+}
+
+/* Section flow arrow */
+.section-flow-arrow {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 0.5rem 0 0 0;
+	color: var(--primary50);
+	width: 100%;
+	gap: 1.5rem;
+}
+
+.section-flow-bracket {
+	width: 100%;
+	height: 1.5rem;
+}
+
+.section-flow-arrow-icon {
+	width: 2.5rem;
+	height: 2.5rem;
+	animation: bounce 2s infinite;
+	filter: drop-shadow(0 1px 3px rgba(0,0,0,0.1));
+	margin-bottom: 1.0rem;
+}
+
+@keyframes bounce {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(0.5rem); }
+}
+
+.chart-label {
 	font-weight: 600;
 	cursor: pointer;
 	box-shadow: 0 2px 12px rgba(0,0,0,0.10);

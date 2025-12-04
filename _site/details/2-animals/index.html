@@ -21,7 +21,7 @@
 </blockquote>
 <p>In the chart we get an overview of global methane emissions. As you can see most of them stem from the agricultural sector and within it most are from rumination:</p>
 <a href="https://www.tabledebates.org/building-blocks/agricultural-methane-and-its-role-greenhouse-gas" target="_blank">
-<img src="/climate-food-guide/assets/img/2-problem/methane-agriculture.png" alt="">
+<img src="/assets/img/2-problem/methane-agriculture.png" alt="">
 </a>
 <p>There are some feed additives which can reduce the methane production of a cow. This however is not a silver bullet and will not be able to remove this element of emissions completely.</p>
 <blockquote>
@@ -162,6 +162,56 @@
       margin-left: auto;
       margin-right: auto;
     }
+  }
+
+  /* Subtitle headings - h2 elements (not the first "Key Ideas" one) */
+  .detail-content h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary67);
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary33);
+  }
+
+  /* Tables */
+  .detail-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  .detail-content table thead {
+    background: var(--primary50);
+    color: white;
+  }
+
+  .detail-content table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1rem;
+    border-bottom: 2px solid var(--primary67);
+  }
+
+  .detail-content table td {
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    color: #374151;
+    line-height: 1.6;
+  }
+
+  .detail-content table tbody tr:hover {
+    background: #f9fafb;
+  }
+
+  .detail-content table tbody tr:last-child td {
+    border-bottom: none;
   }
 
   /* Section headings (Sources, Further Reading) */

@@ -1,9 +1,15 @@
 <section class="py-12 text-center">
-  <h2 class="text-2xl font-bold mb-6">Food System Framework</h2>
-    <div class="flex justify-center gap-3 mb-6">
+  <h2 class="text-2xl font-bold mb-2">Where Are We Now?</h2>
+  <p class="mb-6 text-sm text-gray-600">Before thinking about solutions, we have to understand how the current system works and where emissions come from.<br>
+    Switch views and then learn more about each element, by clicking on it and reading a short explanation.</p>
+    <div class="flex justify-center gap-3 mb-4">
         <button class="diagram-view-btn active px-4 py-2 rounded font-semibold transition" data-view="plain" style="background-color: var(--primary17); color: var(--GREY600);">Plain View</button>
-        <button class="diagram-view-btn inactive px-4 py-2 rounded font-semibold transition" data-view="emissions" style="background-color: var(--accent-250); color: var(--GREY600);">Emissions</button>
+        <button class="diagram-view-btn inactive px-4 py-2 rounded font-semibold transition" data-view="emissions" style="background-color: var(--accent-217); color: var(--GREY600);">Emissions</button>
         <button class="diagram-view-btn inactive px-4 py-2 rounded font-semibold transition" data-view="system" style="background-color: var(--secondary17); color: var(--GREY600);">System</button>
+    </div>
+    
+    <div id="viewDescription" class="mb-6 px-4 py-3 rounded transition" style="background-color: var(--primary17); color: var(--GREY600); max-width: 600px; margin-left: auto; margin-right: auto;">
+        <p class="text-sm">The basic flow of food production from plants and animals to your plate.</p>
     </div>
     
     <style>
@@ -23,7 +29,7 @@
         }
     </style>
     
-    <div id="problemDiagram" style="width:100%; height:600px; border:0px solid var(--GREY300);"></div>
+    <div id="problemDiagram" style="width:100%; height:350px; border:0px solid var(--GREY300);"></div>
 
 </section>
 
