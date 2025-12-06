@@ -3,12 +3,9 @@ layout: detail.njk
 title: Can plants emit Greenhouse Gases?
 ---
 
-## Why Plants Matter
-Plant-based foods generally have a lower carbon footprint compared to animal-based foods.
+THIS IS NOT THE FINISHED ARTICLE!
 
-### Key Points
-- Lower land use
-- Lower emissions
-- Higher efficiency
+The idea here would be to lay out the ways that growing plants can cause emissions:
 
-[Read more](https://ourworldindata.org/less-meat-or-sustainable-meat)
+- Rice: Methane emissions under water
+

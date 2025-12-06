@@ -30,13 +30,14 @@ const actionsData = {
 };
 
 function getConnectionColor(actionId) {
+  // Use theme color names for actions, matching other diagrams
   const colors = {
-    work: tc('secondary50', '#93c5fd'),      // lighter blue
-    volunteer: tc('primary33', '#86efac'), // lighter green/teal
-    buy: tc('accent-150', '#fef3c7'),       // lighter yellow
-    enable: tc('accent-183', '#fbcfe8')     // lighter pink
+    work: tc('primary17', '#bbf7d0'),      // light green
+    volunteer: tc('secondary17', '#b5dced'), // light blue
+    buy: tc('accent-yellow', '#fde68a'),    // light yellow (matches solution branches)
+    enable: tc('accent-217', '#e4cff1')     // light pink/purple
   };
-  return colors[actionId] || tc('GREY300', '#9ca3af');
+  return colors[actionId] || tc('GREY100', '#d6d6d6');
 }
 
 function initializeActionsDiagram() {
@@ -161,7 +162,7 @@ function initializeActionsDiagram() {
     rect.setAttribute('width', boxData.width);
     rect.setAttribute('height', boxData.height);
     rect.setAttribute('rx', '12');
-    rect.setAttribute('fill', isAction ? getConnectionColor(boxData.id) : tc('secondary17', '#dbeafe'));
+    rect.setAttribute('fill', isAction ? getConnectionColor(boxData.id) : tc('GREY100', '#d6d6d6'));
     rect.setAttribute('stroke', 'none');
     rect.setAttribute('opacity', '1');
     rect.setAttribute('class', 'box-rect');

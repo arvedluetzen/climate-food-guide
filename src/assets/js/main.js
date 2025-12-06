@@ -12,6 +12,23 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.addEventListener('click', async (e) => {
+    // Check for header navigation links (About, How to use)
+    const pageLink = e.target.closest('[data-page]');
+    if (pageLink) {
+      e.preventDefault();
+      const page = pageLink.getAttribute('data-page');
+      await openDetailPage(mainContent, page);
+      return;
+    }
+
+    // Check for home link
+    const homeLink = e.target.closest('#home-link');
+    if (homeLink) {
+      e.preventDefault();
+      goBackToHome(mainContent);
+      return;
+    }
+
     // Check for data-detail attribute (SVG nodes, buttons, etc.)
     const target = e.target.closest('[data-detail]');
     if (target) {
@@ -59,7 +76,13 @@ async function openDetailPage(mainContent, source) {
     });
 
     // Normalize the source path to built HTML
-    const path = source.startsWith('details/') ? source : `details/${source}`;
+    // Handle root-level pages (about, how-to-use) vs detail pages
+    let path;
+    if (source === 'about' || source === 'how-to-use') {
+      path = source;
+    } else {
+      path = source.startsWith('details/') ? source : `details/${source}`;
+    }
     const cleanPath = path.endsWith('.md') ? path.replace('.md', '') : path;
 
     // Use window.BASE_URL set in the page (falls back to '/') so
@@ -113,6 +136,29 @@ function goBackToPreviousView(mainContent) {
     setTimeout(() => {
       window.scrollTo(0, window.savedScrollY);
     }, 200);
+  }
+}
+
+/**
+ * Returns to the home view (first item in history)
+ * @param {Element} mainContent - The main content container
+ */
+function goBackToHome(mainContent) {
+  if (window.navigationHistory.length > 0) {
+    // Get the first (home) state
+    const homeState = window.navigationHistory[0];
+    mainContent.innerHTML = homeState.content;
+    
+    // Reset navigation history to just the home page
+    window.navigationHistory = [homeState];
+    
+    // Re-run diagrams script to reinitialize them
+    if (window.reloadDiagrams) {
+      window.reloadDiagrams();
+    }
+
+    // Scroll to top
+    window.scrollTo(0, 0);
   }
 }
 

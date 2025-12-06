@@ -9,8 +9,14 @@
 </head>
 
 <body class="bg-gray-50 text-gray-800 font-sans">
-  <header class="p-6 bg-green-700 text-white text-center">
-    <h1 class="text-3xl font-bold">Climate Food Guide</h1>
+  <header class="p-6 bg-green-700 text-white flex items-center justify-between">
+    <div class="flex items-center">
+      <a href="{{ baseUrl }}" class="text-3xl font-bold hover:underline" id="home-link">Climate Food Guide</a>
+    </div>
+    <nav class="space-x-6">
+      <a href="#" class="text-lg hover:underline" data-page="about">About</a>
+      <a href="#" class="text-lg hover:underline" data-page="how-to-use">How to use</a>
+    </nav>
   </header>
 
   <main id="main-content" class="max-w-6xl mx-auto p-6">

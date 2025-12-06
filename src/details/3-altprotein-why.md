@@ -11,17 +11,17 @@ title: What Are Alternative Proteins?
 
 
 > We really do need the innovation. We need alternative proteins. The one thing that has worked in energy is not “don’t consume” but mitigate the emissions of the consumption. And we need that also in agriculture or our climate goals will be impossible.
-> <cite>[Bruce Friedrich on the Effektiv Spenden Podcast around 1:04:10](https:/ /open.spotify.com/episode/1BQFsMqzMbmBugVE34O5IL?si=82d4041b2b8747ae)</cite>
+> <cite>[Bruce Friedrich on the Effektiv Spenden Podcast around 1:04:10](https://open.spotify.com/episode/1BQFsMqzMbmBugVE34O5IL?si=82d4041b2b8747ae)</cite>
 
 The premise is: Find a way to make meat just without inefficiencies (link), methane (link animals), and slaughter. Short, without animals. As Bruce Friedrich the founder of the Good Food Institute puts it:
 
 > It’s literally: Let’s biomimic the precise meat experience but do it with plants and instead of the ineffiencies of growing massive amounts of crops so we can feed them to animals so we can eat cells, let’s feed the cells directly. [...] the processes require a fraction of the land, cause a fraction of the adverse climate impacts, and are just far more efficient.
-> <cite>[Bruce Friedrich on the Rich Roll Podcast around 13:30](https: //open.spotify.com/episode/5GV9VtbFF30DBBWsKFFcFN?si=a20e1d8cabfd4901)</cite>
+> <cite>[Bruce Friedrich on the Rich Roll Podcast around 13:30](https://open.spotify.com/episode/5GV9VtbFF30DBBWsKFFcFN?si=a20e1d8cabfd4901)</cite>
 
 There is good reason to believe that this approach could be the next solar panel: A green technology that is better and cheaper than it's fossil predecessors.
 
 > What we work on is not alternatives to meat, just as an electric car is not an alternative to a car and solar and wind energy are not alternatives to energy.  We are not focused on plant based meat that requires that people like something they don’t like. We’re literally focused on the science of perfectly biomimmicing the meat experience with plants, so that the two products are indistinguishable. But because the plant based product is more efficient it can actually cost less. So you sit down and have two options. To you they are identical, the plant based product costs less and is healthier.
-> <cite>[Bruce Friedrich on the Effektiv Spenden Podcast around 3:00 (Slightly touched to improve comprehension)](https: //open.spotify.com/episode/1BQFsMqzMbmBugVE34O5IL?si=82d4041b2b8747ae)</cite>
+> <cite>[Bruce Friedrich on the Effektiv Spenden Podcast around 3:00 - Slightly touched to improve comprehension](https://open.spotify.com/episode/1BQFsMqzMbmBugVE34O5IL?si=82d4041b2b8747ae)</cite>
 
 
 If we would actually achieve this, same or better taste at lower cost, it could be a scalable solution to the problems faced when trying to get people to shift diets (link).
@@ -41,7 +41,11 @@ There are two podcasts episodes that I found fascinating in regards to alternati
 
 <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/episode/5GV9VtbFF30DBBWsKFFcFN?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
+<br>
+
 <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/episode/1BQFsMqzMbmBugVE34O5IL?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+<br>
 
 Bruce Friedrich has founded the "Good Food Institute", a non-profit with the mission of scaling alternative proteins globally:
 <a href="https://gfi.org/" target="_blank">The Good Food Institute</a>

@@ -176,8 +176,8 @@ function initializeProblemDiagram() {
     diagram.linkTemplate =
     new go.Link({ routing: go.Routing.Normal, corner: 0 })
         .add(
-        new go.Shape({ strokeWidth: 2, stroke: tc('GREY500', '#555') }),
-        new go.Shape({ toArrow: "Standard", strokeWidth: 0, fill: tc('GREY500', '#555') })
+        new go.Shape({ strokeWidth: 3, stroke: tc('GREY500', '#555') }), // Slightly increased line width
+        new go.Shape({ toArrow: "Standard", strokeWidth: 0, fill: tc('GREY500', '#555'), scale: 2 }) // Increased arrow size
         );
 
     // Initialize with base nodes and links

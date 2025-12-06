@@ -1,21 +1,18 @@
 <div class="detail-page">
-  <!-- Fixed close button in top right -->
-  <button id="close-detail" class="close-button">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-      <path d="M18 6L6 18M6 6l12 12"/>
+  <!-- Fixed back button in top left -->
+  <button id="close-detail" class="back-button">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
     </svg>
+    <span>Go Back</span>
   </button>
   <div class="detail-content">
     <h1 class="detail-main-title">Can plants emit Greenhouse Gases?</h1>
-    <h2>Why Plants Matter</h2>
-<p>Plant-based foods generally have a lower carbon footprint compared to animal-based foods.</p>
-<h3>Key Points</h3>
+    <p>THIS IS NOT THE FINISHED ARTICLE!</p>
+<p>The idea here would be to lay out the ways that growing plants can cause emissions:</p>
 <ul>
-<li>Lower land use</li>
-<li>Lower emissions</li>
-<li>Higher efficiency</li>
+<li>Rice: Methane emissions under water</li>
 </ul>
-<p><a href="https://ourworldindata.org/less-meat-or-sustainable-meat">Read more</a></p>
 
   </div>
 </div>
@@ -27,31 +24,41 @@
     padding-top: 2rem;
   }
 
-  /* Fixed close button - top right corner */
-  .close-button {
-    position: fixed;
-    top: 2rem;
-    right: 2rem;
-    width: 3rem;
-    height: 3rem;
+  /* Fixed back button - starts below header, sticks to top after scroll */
+  .back-button {
+    position: absolute;
+    top: 7rem;
+    left: 2rem;
+    padding: 0.75rem 1.25rem;
     background: white;
     border: 2px solid var(--primary50);
-    border-radius: 50%;
+    border-radius: 0.5rem;
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 0.5rem;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s, position 0.3s, top 0.3s;
     z-index: 1000;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     color: var(--primary50);
+    font-weight: 600;
+    font-size: 1rem;
   }
 
-  .close-button:hover {
+  .back-button.sticky {
+    position: fixed;
+    top: 2rem;
+  }
+
+  .back-button:hover {
     background: var(--primary50);
     color: white;
-    transform: scale(1.1);
+    transform: translateX(-4px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .back-button svg {
+    flex-shrink: 0;
   }
 
   /* Content area with narrow column */
@@ -310,8 +317,6 @@
   }
 </style>
 
-<!-- No scroll-awareness for now to avoid layout issues -->
-
 <script>
   // Ensure all citation/reference links open in a new tab
   (function() {
@@ -326,6 +331,31 @@
         a.setAttribute('rel', 'noopener');
       }
     });
+  })();
+
+  // Make back button sticky after scrolling past header
+  (function() {
+    const backButton = document.querySelector('.back-button');
+    if (!backButton) return;
+
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    function updateButtonPosition() {
+      const headerHeight = header.offsetHeight;
+      const scrollY = window.scrollY || window.pageYOffset;
+
+      if (scrollY > headerHeight) {
+        backButton.classList.add('sticky');
+      } else {
+        backButton.classList.remove('sticky');
+      }
+    }
+
+    // Run on scroll
+    window.addEventListener('scroll', updateButtonPosition);
+    // Run once on load
+    updateButtonPosition();
   })();
   
 </script>

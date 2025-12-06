@@ -3,13 +3,13 @@
     <div class="flex flex-col md:flex-row md:gap-8 items-center">
       <!-- Left: Chart -->
       <div class="md:w-1/2 w-full">
-        <a href="https://ourworldindata.org/environmental-impacts-of-food?insight=food-is-responsible-for-one-quarter-of-the-worlds-emissions#key-insights" target="_blank">
-        <img src="{{ baseUrl }}assets/img/1-intro/How-much-of-GHGs-come-from-food.png" alt="Breakdown of greenhouse gas emissions from food systems">
+        <a href="https://www.agrivi.com/blog/scope-3-emissions-in-food-production/" target="_blank">
+        <img src="{{ baseUrl }}assets/img/1-intro/foodsystem-emissions-crop.jpeg" alt="Breakdown of greenhouse gas emissions from food systems" class="rounded-lg shadow-lg">
         </a>
       </div>
       <!-- Right: Title + Intro + Button -->
       <div class="flex flex-col md:w-1/2 w-full justify-center">
-        <h2 class="text-3xl font-bold mb-4">How can Food become Climate Neutral?</h2>
+        <h2 class="text-3xl font-bold mb-4">How Can We Produce Food without Harming the Climate?</h2>
         <div class="prose prose-sm md:prose-base mb-6 text-justify">
           <p>
             Our food system contributes roughly 30% of global greenhouse gas emissions.

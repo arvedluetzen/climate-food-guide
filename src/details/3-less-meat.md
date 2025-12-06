@@ -9,7 +9,7 @@ title: What would happen if we reduced meat consumption?
 - If it were the average diet on earth it would reduce food related greenhous gas emissions by almost 50%
 
 
-As we have seen (ARTICLE), animal products generally have a lot higher emissions per calorie or gram of protein than food from plants. A very straightforward to reducing emissions could be to increase the share of plants in diets a lot. Researchers have proposed a diet “to balance the goals of healthy nutrition and environmental sustainability for a global population.” Below you can see how its contents would compare to the average diet of some countries.
+As we have seen (LINK ARTICLE), animal products generally have a lot higher emissions per calorie or gram of protein than food from plants. A very straightforward to reducing emissions could be to increase the share of plants in diets a lot. Researchers have proposed a diet “to balance the goals of healthy nutrition and environmental sustainability for a global population.” Below you can see how its contents would compare to the average diet of some countries.
 
 <iframe src="https://ourworldindata.org/grapher/eat-lancet-diet-comparison?country=USA~EAT-Lancet~IND~KEN~CAN~CHE&tab=chart" loading="lazy" style="width: 100%; height: 600px; border: 0px none;" allow="web-share; clipboard-write"></iframe>
 
