@@ -323,8 +323,8 @@ function initializeSolutionDiagram() {
 
   // Link template: use a link-level 'isVisible' property so arrows hide/show cleanly
   diagram.linkTemplate = $(go.Link, { routing: go.Link.Orthogonal, corner: 5 },
-    $(go.Shape, { strokeWidth: 2, stroke: (window.themeColors && window.themeColors.GREY500) || '#666' }, new go.Binding('opacity', 'isVisible', v => v ? 1 : 0)),
-    $(go.Shape, { toArrow: 'Standard', strokeWidth: 0, fill: (window.themeColors && window.themeColors.GREY500) || '#666' }, new go.Binding('opacity', 'isVisible', v => v ? 1 : 0))
+    $(go.Shape, { strokeWidth: 3, stroke: (window.themeColors && window.themeColors.GREY500) || '#666' }, new go.Binding('opacity', 'isVisible', v => v ? 1 : 0)), // Slightly increased line width
+    $(go.Shape, { toArrow: 'Standard', strokeWidth: 0, fill: (window.themeColors && window.themeColors.GREY500) || '#666', scale: 2 }, new go.Binding('opacity', 'isVisible', v => v ? 1 : 0)) // Increased arrow size
   );
 
   // Initialize with full tree - all nodes and links, but only some visible
@@ -343,19 +343,21 @@ function initializeSolutionDiagram() {
   diagram.model = new go.GraphLinksModel(initialNodes, initialLinks);
 
   window.solutionDiagram = diagram;
-  window.selectedPath = [1000];
-  
-  // Auto-scale diagram to fit container
-  setTimeout(() => {
-    // Fit once on init without animation to get viewport bounds
-    try { diagram.zoomToFit(); } catch (e) {}
-
-  }, 100);
-
-  // Immediately apply the same centering behavior as clicking the parent once
-  setTimeout(() => {
-    try { selectNode(1000); } catch (e) {}
-  }, 120);
+  // If a saved path exists, use it; otherwise, default to root
+  if (window.savedSolutionPath && window.savedSolutionPath.length > 0) {
+    window.selectedPath = window.savedSolutionPath;
+    setTimeout(() => {
+      rebuildDiagramForSelection();
+      try { diagram.zoomToFit(); } catch (e) {}
+      window.savedSolutionPath = null;
+    }, 120);
+  } else {
+    window.selectedPath = [1000];
+    setTimeout(() => {
+      try { selectNode(1000); } catch (e) {}
+      try { diagram.zoomToFit(); } catch (e) {}
+    }, 120);
+  }
 }
 
 // Smoothly animate diagram to fit the viewport without a jump

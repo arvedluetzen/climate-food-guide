@@ -1,26 +1,33 @@
 <div class="detail-page">
-  <!-- Fixed close button in top right -->
-  <button id="close-detail" class="close-button">
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-      <path d="M18 6L6 18M6 6l12 12"/>
+  <!-- Fixed back button in top left -->
+  <button id="close-detail" class="back-button">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
     </svg>
+    <span>Go Back</span>
   </button>
   <div class="detail-content">
-    <h1 class="detail-main-title">If you want change, be an early adopter of the change!</h1>
-    <h2>Key Insight:</h2>
+    <h1 class="detail-main-title">What is your &quot;Handprint&quot;?</h1>
+    <p>There is a non-profit called <a href="https://80000hours.org/">80’000 hours</a>. They are an organisation focusing on making a difference in one's working life. Their career guide starts like this:</p>
 <blockquote>
-<p>No, you’re not going to solve climate change by swapping your beefburger for a meat substitute one. But your impact is also a bit higher than the carbon savings of your burger alone. When we buy products like meat substitutes we’re sending a signal to the market — to existing companies and new innovators — that there is demand. It’s like waving a flag for businesses to come and serve us with low-carbon products. This not only attracts new innovators and companies to build better products, but it also allows existing ones to scale and drives the cost down.
-<cite><a href="https://www.sustainabilitybynumbers.com/p/the-false-dichotomy-of-systemic-and">Hannah Ritchie</a></cite></p>
+<p>You’ll spend about 80,000 hours working in your career: 40 hours a week, 50 weeks a year, for 40 years. So how to spend that time is one of the most important decisions you’ll ever make.</p>
+<p>Choose wisely, and you will not only have a more rewarding and interesting life — you’ll also be able to help solve some of the world’s most pressing problems. But how should you choose.
+<cite><a href="https://80000hours.org/career-guide/introduction/">80'000 hours Career Guide</a></cite></p>
 </blockquote>
-<p>There needs to be big systemic change which also means the economy will have to change. New markets, like alternative proteins, can only grow if there are people who buy their things - even if they are not yet cheaper or taste as good.</p>
+<p>They propose a framework:</p>
 <blockquote>
-<p>My religion for new ideas has been the law of diffusion of innovation. […] In every population you are going to have a standard deviation. You are going to have high performers, low performers, and an average. Always. […] [The law of diffusion says that] the first 2.5% of any population are going to be your big idea people, your innovators. The next 12.5% are your early adopters. These are the people who are very comfortable spending time, money, and energy to be part of something that reflects their own beliefs. […] Then you have the majority, the 68%: more cynical, more practical, “what is in it for me?”, “will I get my money back?”. Then you have your laggers, the last 16%, the only reason they make any change is because they don’t have any other choice any more. The law of diffusion says that if you want to achieve mass market success or acceptance for any product, you have to achieve between 15 and 18% of market penetration. Then there is a social phenomenon that happens called a tipping point: It just goes. And the reason is very simple: The early majority will not try something until somebody else has tried it first. […]
-<cite><a href="https://m.youtube.com/watch?v=fDILpuiLuAI&amp;pp=ygUac2ltb24gc2luZWsgZWFybHkgYWRvcHRlcnM%3D">Simon Sinek</a></cite></p>
+<p>We think the impact you can have in different careers is driven by three main factors:</p>
+<ol>
+<li>How <strong>pressing the problems are</strong> that you focus on</li>
+<li>The <strong>scale of the contribution</strong> the path lets you make to tackling those problems</li>
+<li>Your <strong>personal fit</strong> for the path</li>
+</ol>
+<p><cite><a href="https://80000hours.org/make-a-difference-with-your-career/">80'000 hours Advanced Series</a></cite></p>
 </blockquote>
-<a href="https://thebrandhopper.com/2020/11/13/marketing-concept-diffusion-of-innovation/" target="_blank">
-<img src="/climate-food-guide/assets/img/4-actions/diffusion-of-innovation.png" alt="bell curve illustrating the law of diffusion of innovations">
-</a>
-<p>If you want to see change happen, then be the early adopter. You are part of the population and though you are just one out of Millions, you can help drive society closer to the tipping point.</p>
+<p>I think there are convincing arguments to made, some of which are in this guide, that working on transforming the way we produce food is a pressing problem on a large scale. Equally convincing is the argument that you will be able to have a bigger impact by spending your working life on a problem than by most other means you can think of. Besides considering the footprint of your actions, think about your handprint - the impact of your work.</p>
+<h1>Sources:</h1>
+<p>If you want to learn more about this idea, check out the <a href="https://80000hours.org/career-guide/" target="_blank">career guide of 80'000 hours</a></p>
+<p>Factory farming is one of the most pressing problems they have identified. Their reasoning takes mostly a moral perspective. If you are interested, read their explanation: <a href="https://80000hours.org/problem-profiles/factory-farming/" target="_blank">Factory farming</a></p>
 
   </div>
 </div>
@@ -32,31 +39,41 @@
     padding-top: 2rem;
   }
 
-  /* Fixed close button - top right corner */
-  .close-button {
-    position: fixed;
-    top: 2rem;
-    right: 2rem;
-    width: 3rem;
-    height: 3rem;
+  /* Fixed back button - starts below header, sticks to top after scroll */
+  .back-button {
+    position: absolute;
+    top: 7rem;
+    left: 2rem;
+    padding: 0.75rem 1.25rem;
     background: white;
     border: 2px solid var(--primary50);
-    border-radius: 50%;
+    border-radius: 0.5rem;
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 0.5rem;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s, position 0.3s, top 0.3s;
     z-index: 1000;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     color: var(--primary50);
+    font-weight: 600;
+    font-size: 1rem;
   }
 
-  .close-button:hover {
+  .back-button.sticky {
+    position: fixed;
+    top: 2rem;
+  }
+
+  .back-button:hover {
     background: var(--primary50);
     color: white;
-    transform: scale(1.1);
+    transform: translateX(-4px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .back-button svg {
+    flex-shrink: 0;
   }
 
   /* Content area with narrow column */
@@ -315,8 +332,6 @@
   }
 </style>
 
-<!-- No scroll-awareness for now to avoid layout issues -->
-
 <script>
   // Ensure all citation/reference links open in a new tab
   (function() {
@@ -331,6 +346,31 @@
         a.setAttribute('rel', 'noopener');
       }
     });
+  })();
+
+  // Make back button sticky after scrolling past header
+  (function() {
+    const backButton = document.querySelector('.back-button');
+    if (!backButton) return;
+
+    const header = document.querySelector('header');
+    if (!header) return;
+
+    function updateButtonPosition() {
+      const headerHeight = header.offsetHeight;
+      const scrollY = window.scrollY || window.pageYOffset;
+
+      if (scrollY > headerHeight) {
+        backButton.classList.add('sticky');
+      } else {
+        backButton.classList.remove('sticky');
+      }
+    }
+
+    // Run on scroll
+    window.addEventListener('scroll', updateButtonPosition);
+    // Run once on load
+    updateButtonPosition();
   })();
   
 </script>
